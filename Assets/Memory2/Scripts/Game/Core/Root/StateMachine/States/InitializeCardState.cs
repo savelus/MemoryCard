@@ -12,12 +12,13 @@ using Random = System.Random;
 namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
     public class InitializeCardState : State {
         private readonly UIGameplayRoot _uiGameplayRoot;
-
+        private readonly InitializeEnemyState _initializeEnemyState;
         private readonly CardsConfig _cardsConfig;
         private readonly CardInputService _cardInputService;
 
-        public InitializeCardState(Base.StateMachine stateMachine, CardsConfig cardsConfig, CardInputService cardInputService, UIGameplayRoot uiGameplayRoot) : base(stateMachine) {
+        public InitializeCardState(Base.StateMachine stateMachine, CardsConfig cardsConfig, CardInputService cardInputService, UIGameplayRoot uiGameplayRoot, InitializeEnemyState initializeEnemyState) : base(stateMachine) {
             _uiGameplayRoot = uiGameplayRoot;
+            _initializeEnemyState = initializeEnemyState;
             _cardsConfig = cardsConfig;
             _cardInputService = cardInputService;
         }
@@ -32,6 +33,8 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
             }
             
             _cardInputService.SubscribeAllCards(shuffledCurds);
+            
+            _stateMachine.ChangeState(_initializeEnemyState);
         }
 
         private CardPresenter[] ShuffleCards(int cardsCount, List<CardData> cardPrefabs) {

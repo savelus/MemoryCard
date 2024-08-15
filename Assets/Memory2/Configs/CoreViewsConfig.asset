@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8507b927e98e4bc0b3aacd88370f2cfe, type: 3}
   m_Name: CoreViewsConfig
   m_EditorClassIdentifier: 
+  _uiGameplayRoot: {fileID: 8820376132508902339, guid: dc77072fb55f9ec41a65da923a8f15ec, type: 3}
   _pointsView: {fileID: 136201590324082416, guid: ba17a8717c00c3940b45d70f68a251c4, type: 3}

@@ -7,6 +7,7 @@ namespace Memory2.Scripts.Game.Core.Root.View {
     public class UIGameplayRoot : MonoBehaviour {
         [SerializeField] private Button _exitButton;
         [SerializeField] private Transform _cardRoot;
+        [SerializeField] private Transform _enemyRoot;
 
         private Subject<Unit> _exitSceneSignalSubject;
 
@@ -17,6 +18,10 @@ namespace Memory2.Scripts.Game.Core.Root.View {
         
         public void AddCard(Transform card) {
             card.SetParent(_cardRoot, false);
+        }
+        
+        public void AddEnemy(Transform enemy) {
+            enemy.SetParent(_enemyRoot, false);
         }
     }
 }

@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Memory2.Scripts.Game.Core.Configs.Installers {
     [CreateAssetMenu(fileName = "CardsConfig", menuName = "Configs/CardsConfig")]
-    public class ConfigInstaller : ScriptableObjectInstaller<ConfigInstaller> {
+    public class CardsConfigInstaller : ScriptableObjectInstaller<CardsConfigInstaller> {
         [SerializeField] private CardsConfig _cardsConfig;
         
         public override void InstallBindings() {

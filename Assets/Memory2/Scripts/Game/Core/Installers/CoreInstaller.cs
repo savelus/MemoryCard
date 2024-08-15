@@ -8,7 +8,6 @@ namespace Memory2.Scripts.Game.Core.Installers {
         public override void InstallBindings() {
             InstallStateMachine();
             InstallServices();
-            InstallConfigs();
         }
 
         private void InstallServices() {
@@ -16,9 +15,12 @@ namespace Memory2.Scripts.Game.Core.Installers {
                 .Bind<CardInputService>()
                 .AsSingle()
                 .NonLazy();
+            
+            Container
+                .Bind<EnemyService>()
+                .AsSingle()
+                .NonLazy();
         }
-
-        private void InstallConfigs() { }
 
         private void InstallStateMachine() {
             Container
@@ -28,6 +30,11 @@ namespace Memory2.Scripts.Game.Core.Installers {
 
             Container
                 .Bind<InitializeCardState>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .Bind<InitializeEnemyState>()
                 .AsSingle()
                 .NonLazy();
         }
