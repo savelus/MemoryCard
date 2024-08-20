@@ -6,39 +6,30 @@ using UnityEngine.Events;
 
 namespace Memory2.Scripts.Game.Core.Presenters {
     public class CardPresenter {
-        public ReactiveProperty<int> Damage;
-        public ReactiveProperty<Color> Color;
-        public ReactiveProperty<Sprite> Sprite;
         public event UnityAction<CardPresenter> CardClicked;
         
         private CardData _cardData;
         private CardView _cardView;
         private Color _backColor;
 
-        public CardPresenter(CardData cardPrefab) {
-            _cardData = cardPrefab;
-            Damage = new ReactiveProperty<int>(cardPrefab.Damage);
-            Color = new ReactiveProperty<Color>(cardPrefab.Color);
-            Sprite = new ReactiveProperty<Sprite>(cardPrefab.Sprite);
-        }
-
         public int CardId => _cardData.Id;
-//TODO перенести все в конструктор
-        public void Initialize(CardView cardView, Color cardsConfigCardBackSideColor) {
+
+        public CardPresenter(CardView cardView, CardData cardData, Color backColor) {
             _cardView = cardView;
-            _backColor = cardsConfigCardBackSideColor;
-            
-            Damage.Subscribe(cardView.ChangeDamage);
-            Color.Subscribe(cardView.ChangeColor);
-            Sprite.Subscribe(cardView.ChangeSprite);
-
-            cardView.CardClicked += () => CardClicked?.Invoke(this);
-
+            _cardData = cardData;
+            _backColor = backColor;
+        }
+        
+        public void Initialize(int cardIndex) {
+            CardClicked = null;
+            _cardView.ChangeDamage(_cardData.Damage);
+            _cardView.SubscribeOnCardClicked(() => CardClicked?.Invoke(this));
+            SetSiblingIndex(cardIndex);
             CloseCard();
         }
 
         public void OpenCard() {
-            _cardView.OpenCard(Color.Value);
+            _cardView.OpenCard(_cardData.Color);
         }
 
         public void CloseCard() {
@@ -52,6 +43,10 @@ namespace Memory2.Scripts.Game.Core.Presenters {
 
         public int GetDamage() {
             return _cardData.Damage;
+        }
+
+        public void SetSiblingIndex(int index) {
+            _cardView.transform.SetSiblingIndex(index);
         }
     }
 }

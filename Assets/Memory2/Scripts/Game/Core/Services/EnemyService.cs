@@ -1,18 +1,24 @@
-﻿using Memory2.Scripts.Game.Core.Configs;
+﻿using System;
+using Memory2.Scripts.Game.Core.Configs;
 using Memory2.Scripts.Game.Core.Presenters;
 using Memory2.Scripts.Game.Core.Root.View;
-using UnityEngine;
+using UnityEngine.Events;
+using Object = UnityEngine.Object;
 
 namespace Memory2.Scripts.Game.Core.Services {
     //TODO 1. Заспавнить и добавить на View врага
     //TODO 2. Метод получения урона
     //TODO 3. Окончание игры после смерти
     
-    public class EnemyService {
+    public sealed class EnemyService {
         private readonly PrefabConfig _prefabConfig;
         private readonly UIGameplayRoot _uiGameplayRoot;
         private readonly EnemyConfig _enemyConfig;
+        
+        private EnemyPresenter _activeEnemy;
 
+        public event UnityAction GameEnded; 
+        
         public EnemyService(PrefabConfig prefabConfig, UIGameplayRoot uiGameplayRoot, EnemyConfig enemyConfig) {
             _prefabConfig = prefabConfig;
             _uiGameplayRoot = uiGameplayRoot;
@@ -24,8 +30,16 @@ namespace Memory2.Scripts.Game.Core.Services {
             var enemyView = Object.Instantiate(_prefabConfig.GetEnemyPrefab());
             _uiGameplayRoot.AddEnemy(enemyView.transform);
             
-            var enemyPresenter = new EnemyPresenter(enemyView, enemyData);
-            enemyPresenter.InitView();
+            _activeEnemy = new EnemyPresenter(enemyView, enemyData);
+            _activeEnemy.InitView();
+        }
+        
+        public void DamageEnemy(int damage) {
+            _activeEnemy.DamageEnemy(damage);
+        }
+
+        public void SubscribeOnGameEnded(UnityAction enemyDead) {
+            _activeEnemy.EnemyDead += enemyDead;
         }
     }
 }

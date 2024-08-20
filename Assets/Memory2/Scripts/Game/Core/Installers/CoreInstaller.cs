@@ -37,6 +37,11 @@ namespace Memory2.Scripts.Game.Core.Installers {
                 .Bind<InitializeEnemyState>()
                 .AsSingle()
                 .NonLazy();
+            
+            Container
+                .Bind<DeadEnemyState>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

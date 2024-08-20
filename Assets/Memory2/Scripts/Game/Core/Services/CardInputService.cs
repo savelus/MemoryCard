@@ -1,23 +1,31 @@
-﻿using DG.Tweening;
+﻿using System.Collections.Generic;
+using DG.Tweening;
 using Memory2.Scripts.Game.Core.Data;
 using Memory2.Scripts.Game.Core.Presenters;
 using Memory2.Scripts.Game.Core.Storages;
+using UnityEngine.Events;
 
 namespace Memory2.Scripts.Game.Core.Services {
-    public class CardInputService {
+    public sealed class CardInputService {
+        public event UnityAction CardsEnded;
+        
         private readonly PointStorage _pointStorage;
+        private readonly EnemyService _enemyService;
         private CardPresenter _firstPickedCard;
         private CardPresenter _secondPickedCard;
-        private CardPresenter[] _cardPresenters;
+        private HashSet<int> _activeCards = new();
 
-        public CardInputService(PointStorage pointStorage) {
+        public CardInputService(PointStorage pointStorage, EnemyService enemyService) {
             _pointStorage = pointStorage;
+            _enemyService = enemyService;
         }
         
         public void SubscribeAllCards(CardPresenter[] cardPresenters) {
-            _cardPresenters = cardPresenters;
+            _firstPickedCard = null;
+            _secondPickedCard = null;
             
             foreach (var cardPresenter in cardPresenters) {
+                _activeCards.Add(cardPresenter.CardId);
                 cardPresenter.CardClicked += OnCardClicked;
             }
         }
@@ -66,6 +74,7 @@ namespace Memory2.Scripts.Game.Core.Services {
                 .AppendInterval(0.5f)
                 .AppendCallback(()=> {
                     PairCard(localFirstCard, localSecondCard);
+                    
                 });
             sequence.Play();
             return true;
@@ -73,8 +82,15 @@ namespace Memory2.Scripts.Game.Core.Services {
 
         private void PairCard(CardPresenter firstCard, CardPresenter secondCard) {
             _pointStorage.AddPoints(firstCard.GetDamage() + secondCard.GetDamage());
+            _enemyService.DamageEnemy(firstCard.GetDamage() + secondCard.GetDamage());
+            
+            _activeCards.Remove(firstCard.CardId);
             firstCard.RemoveCard();
             secondCard.RemoveCard();
+
+            if (_activeCards.Count == 0) {
+                CardsEnded?.Invoke();
+            }
         }
     }
 }

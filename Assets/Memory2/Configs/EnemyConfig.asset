@@ -15,5 +15,5 @@ MonoBehaviour:
   _enemyConfig:
     Enemies:
     - Name: Valera
-      Health: 80
+      Health: 8000
       Sprite: {fileID: 21300000, guid: 461f8caab7ff6f54aa9b0df8709ef5c0, type: 3}

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Memory2.Scripts.Game.Core.View {
     public class CardView : MonoBehaviour {
-        public event UnityAction CardClicked;
+        private event UnityAction CardClicked;
         
         [SerializeField] private TextMeshProUGUI _damage;
         [SerializeField] private Image _image;
@@ -16,6 +16,11 @@ namespace Memory2.Scripts.Game.Core.View {
             _button.onClick.AddListener(()=> CardClicked?.Invoke());
         }
 
+        public void SubscribeOnCardClicked(UnityAction callback) {
+            CardClicked = null;
+            CardClicked += callback;
+        }
+        
         public void ChangeColor(Color color) {
             _image.color = color;
         }

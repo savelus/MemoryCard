@@ -15,6 +15,7 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
         private readonly InitializeEnemyState _initializeEnemyState;
         private readonly CardsConfig _cardsConfig;
         private readonly CardInputService _cardInputService;
+        private CardPresenter[] _cardPresenters;
 
         public InitializeCardState(Base.StateMachine stateMachine, CardsConfig cardsConfig, CardInputService cardInputService, UIGameplayRoot uiGameplayRoot, InitializeEnemyState initializeEnemyState) : base(stateMachine) {
             _uiGameplayRoot = uiGameplayRoot;
@@ -24,33 +25,38 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
         }
 
         public override void Enter() {
-            var cardPrefab = _cardsConfig.CardPrefab;
-            var shuffledCurds = ShuffleCards(_cardsConfig.CardCount, _cardsConfig.Cards);
-            for (var i = 0; i < shuffledCurds.Length; i++) {
-                var card = Object.Instantiate(cardPrefab);
-                _uiGameplayRoot.AddCard(card.transform);
-                shuffledCurds[i].Initialize(card, _cardsConfig.CardBackSideColor);
-            }
-            
-            _cardInputService.SubscribeAllCards(shuffledCurds);
-            
+            _cardPresenters = InitPresenters(_cardsConfig.CardCount, _cardsConfig.Cards);
+            _cardInputService.CardsEnded += ReFillCards;
+            ReFillCards();
+
             _stateMachine.ChangeState(_initializeEnemyState);
         }
 
-        private CardPresenter[] ShuffleCards(int cardsCount, List<CardData> cardPrefabs) {
-            var preparedCards = new CardPresenter[cardsCount];
-            var cardsNumbers = GetCardsNumbers(cardsCount);
-            for (var i = 0; i < cardsCount; i++) {
-                preparedCards[i] = new CardPresenter(cardPrefabs[cardsNumbers[i]]);
+        private CardPresenter[] InitPresenters(int cardsCount, List<CardData> cardsData) {
+            var presenters = new CardPresenter[cardsCount];
+            var cardPrefab = _cardsConfig.CardPrefab;
+            for (int i = 0; i < cardsCount; i++) {
+                var card = Object.Instantiate(cardPrefab);
+                card.gameObject.name = "Card " + i;
+                _uiGameplayRoot.AddCard(card.transform);
+                presenters[i] = new CardPresenter(card, cardsData[i / 2], _cardsConfig.CardBackSideColor);
             }
 
-            return preparedCards;
+            return presenters;
         }
 
-        private int[] GetCardsNumbers(int size) {
+        private void ReFillCards() {
+            var cardNumbers = GetShuffledCardIndexes(_cardsConfig.CardCount);
+            for (var i = 0; i < _cardPresenters.Length; i++) {
+                _cardPresenters[i].Initialize(cardNumbers[i]);
+            }
+            
+            _cardInputService.SubscribeAllCards(_cardPresenters);
+        }
+
+        private int[] GetShuffledCardIndexes(int size) {
             var orderedList = new List<int>(size);
-            for (var i = 0; i < size / 2; i++) {
-                orderedList.Add(i);
+            for (var i = 0; i < size; i++) {
                 orderedList.Add(i);
             }
 
