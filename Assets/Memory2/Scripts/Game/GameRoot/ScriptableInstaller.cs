@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Memory2.Scripts.Game.Timer;
+using UnityEngine;
 using Zenject;
 
 namespace Memory2.Scripts.Game.GameRoot {
@@ -7,6 +8,11 @@ namespace Memory2.Scripts.Game.GameRoot {
         public override void InstallBindings() {
             Container
                 .Bind<GameEntryPoint>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
+                .BindInterfacesAndSelfTo<TimerFactory>()
                 .AsSingle()
                 .NonLazy();
         }

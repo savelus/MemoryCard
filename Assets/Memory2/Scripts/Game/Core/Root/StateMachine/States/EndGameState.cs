@@ -3,11 +3,11 @@ using Memory2.Scripts.Game.Core.Root.View;
 using Memory2.Scripts.Game.Core.Storages;
 
 namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
-    public class DeadEnemyState : State {
+    public class EndGameState : State {
         private readonly UIGameplayRoot _uiGameplayRoot;
         private readonly PointStorage _pointStorage;
 
-        public DeadEnemyState(Base.StateMachine stateMachine, UIGameplayRoot uiGameplayRoot, PointStorage pointStorage) : base(stateMachine) {
+        public EndGameState(Base.StateMachine stateMachine, UIGameplayRoot uiGameplayRoot, PointStorage pointStorage) : base(stateMachine) {
             _uiGameplayRoot = uiGameplayRoot;
             _pointStorage = pointStorage;
         }

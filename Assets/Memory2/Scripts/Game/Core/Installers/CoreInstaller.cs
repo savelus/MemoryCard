@@ -39,7 +39,12 @@ namespace Memory2.Scripts.Game.Core.Installers {
                 .NonLazy();
             
             Container
-                .Bind<DeadEnemyState>()
+                .Bind<EndGameState>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .Bind<StartTimerState>()
                 .AsSingle()
                 .NonLazy();
         }
