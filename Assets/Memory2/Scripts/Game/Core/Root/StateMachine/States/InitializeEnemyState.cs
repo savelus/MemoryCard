@@ -24,12 +24,13 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
         
         public override void Enter() {
             _enemyService.SpawnEnemy();
-            _enemyService.SubscribeOnGameEnded(EndState);
+            _enemyService.EnemyDead += EndState;
             
             _stateMachine.ChangeState(_nextState);
         }
 
         private void EndState() {
+            _enemyService.EnemyDead -= EndState;
             _stateMachine.ChangeState(_endGameState);
         }
     }

@@ -1,6 +1,7 @@
 using Memory2.Scripts.Game.Extensions;
 using R3;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Memory2.Scripts.Game.Core.Root.View {
@@ -8,8 +9,9 @@ namespace Memory2.Scripts.Game.Core.Root.View {
         [SerializeField] private Button _exitButton;
         [SerializeField] private Transform _cardRoot;
         [SerializeField] private Transform _enemyRoot;
+        [SerializeField] private Transform _timerRoot;
         [SerializeField] private EndGameView _endGameView;
-        
+
         private Subject<Unit> _exitSceneSignalSubject;
 
         public void Bind(Subject<Unit> exitSceneSignalSubject) {
@@ -25,9 +27,20 @@ namespace Memory2.Scripts.Game.Core.Root.View {
         public void AddEnemy(Transform enemy) {
             enemy.SetParent(_enemyRoot, false);
         }
-        
-        public void ShowEndGamePopUp(int score) {
-            _endGameView.Show(score.ToString());
+
+        public void AddTimer(Transform timerTransform) {
+            timerTransform.SetParent(_timerRoot, false);
+        }
+
+        public void ShowEndGamePopUp(int score, bool isEnemyAlive) {
+            if (!isEnemyAlive) {
+                _endGameView.ShowWinWindow(score.ToString());    
+            }
+            else {
+                _endGameView.ShowLoseWindow(score.ToString());
+            }
+            
+            
         }
     }
 }

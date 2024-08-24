@@ -6,7 +6,7 @@ namespace Memory2.Scripts.Game.Core.Installers {
     public class PresentersInstaller : MonoInstaller {
         public override void InstallBindings() {
             Container
-                .BindInterfacesAndSelfTo<PointsPresenter>()
+                .BindInterfacesAndSelfTo<TimerPresenter>()
                 .AsSingle()
                 .NonLazy();
         }

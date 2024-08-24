@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiGameplayRoot: {fileID: 8820376132508902339, guid: dc77072fb55f9ec41a65da923a8f15ec, type: 3}
   _pointsView: {fileID: 136201590324082416, guid: ba17a8717c00c3940b45d70f68a251c4, type: 3}
+  _timerView: {fileID: 4775597578034452660, guid: da862a1bf3852e9479d6206162a3e97c, type: 3}

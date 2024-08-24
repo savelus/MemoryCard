@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Memory2.Scripts.Game.Timer {
     public class Timer {
+        public event Action TimerStarted;
         public event Action TimerEnded;
         public event Action TimerStopped;
         public event Action TimerResumed;
@@ -22,6 +23,7 @@ namespace Memory2.Scripts.Game.Timer {
             _timeLeft = duration;
             _secondsLeft = duration;
             _isPlaying = true;
+            TimerStarted?.Invoke();
         }
 
         public void Stop() {

@@ -17,7 +17,8 @@ namespace Memory2.Scripts.Game.Core.Services {
         
         private EnemyPresenter _activeEnemy;
 
-        public event UnityAction GameEnded; 
+        public bool IsEnemyAlive { get; private set; }
+        public event UnityAction EnemyDead; 
         
         public EnemyService(PrefabConfig prefabConfig, UIGameplayRoot uiGameplayRoot, EnemyConfig enemyConfig) {
             _prefabConfig = prefabConfig;
@@ -32,14 +33,17 @@ namespace Memory2.Scripts.Game.Core.Services {
             
             _activeEnemy = new EnemyPresenter(enemyView, enemyData);
             _activeEnemy.InitView();
+            _activeEnemy.EnemyDead += OnEnemyDead;
+            IsEnemyAlive = true;
         }
         
         public void DamageEnemy(int damage) {
             _activeEnemy.DamageEnemy(damage);
         }
 
-        public void SubscribeOnGameEnded(UnityAction enemyDead) {
-            _activeEnemy.EnemyDead += enemyDead;
+        private void OnEnemyDead() {
+            IsEnemyAlive = false;
+            EnemyDead?.Invoke();
         }
     }
 }

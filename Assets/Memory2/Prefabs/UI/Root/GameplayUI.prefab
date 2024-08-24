@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &934534766268517547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5094681008815666670}
+  m_Layer: 5
+  m_Name: TimerRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5094681008815666670
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934534766268517547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3775711860795292675}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.07, y: 0.86}
+  m_AnchorMax: {x: 0.93, y: 0.9}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1233292784948760254
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5894672020567882677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -470,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e2d0adcc92ffe448e209e97bfbb8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: {fileID: 2134835110951205929}
   _score: {fileID: 8067518007840215290}
   _menuButton: {fileID: 4292207329429243486}
 --- !u!1 &2558211979360304158
@@ -898,6 +934,7 @@ RectTransform:
   - {fileID: 4867219244156310637}
   - {fileID: 2687928396454786157}
   - {fileID: 7797600638979993003}
+  - {fileID: 5094681008815666670}
   - {fileID: 5894672020567882677}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -921,6 +958,7 @@ MonoBehaviour:
   _exitButton: {fileID: 6076147136445346450}
   _cardRoot: {fileID: 2687928396454786157}
   _enemyRoot: {fileID: 7797600638979993003}
+  _timerRoot: {fileID: 5094681008815666670}
   _endGameView: {fileID: 5108243323400430825}
 --- !u!1 &7226363790104890585
 GameObject:

@@ -8,6 +8,7 @@ namespace Memory2.Scripts.Game.Core.Installers {
     public class CoreViewsInstaller : ScriptableObjectInstaller {
         [SerializeField] private UIGameplayRoot _uiGameplayRoot;
         [SerializeField] private PointsView _pointsView;
+        [SerializeField] private GameTimerView _timerView;
 
         public override void InstallBindings() {
             Container
@@ -16,8 +17,8 @@ namespace Memory2.Scripts.Game.Core.Installers {
                 .AsSingle();
 
             Container
-                .Bind<PointsView>()
-                .FromComponentInNewPrefab(_pointsView)
+                .Bind<GameTimerView>()
+                .FromComponentInNewPrefab(_timerView)
                 .AsSingle();
         }
     }
