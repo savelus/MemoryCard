@@ -1,6 +1,8 @@
+using System;
 using Memory2.Scripts.Game.Extensions;
 using R3;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -12,12 +14,8 @@ namespace Memory2.Scripts.Game.Core.Root.View {
         [SerializeField] private Transform _timerRoot;
         [SerializeField] private EndGameView _endGameView;
 
-        private Subject<Unit> _exitSceneSignalSubject;
-
-        public void Bind(Subject<Unit> exitSceneSignalSubject) {
-            _exitSceneSignalSubject = exitSceneSignalSubject;
-            _exitButton.Subscribe(() => _exitSceneSignalSubject?.OnNext(Unit.Default));
-            _endGameView.Init(() => _exitSceneSignalSubject?.OnNext(Unit.Default));
+        public void Bind(UnityAction endGame) {
+            _exitButton.Subscribe(endGame);
         }
         
         public void AddCard(Transform card) {
@@ -39,8 +37,10 @@ namespace Memory2.Scripts.Game.Core.Root.View {
             else {
                 _endGameView.ShowLoseWindow(score.ToString());
             }
-            
-            
+        }
+
+        public EndGameView GetEndGameView() {
+            return _endGameView;
         }
     }
 }

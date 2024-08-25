@@ -1,3 +1,4 @@
+using System;
 using Memory2.Scripts.Game.Extensions;
 using TMPro;
 using UnityEngine;
@@ -6,13 +7,14 @@ using UnityEngine.UI;
 
 namespace Memory2.Scripts.Game.Core.Root.View {
     public class EndGameView : MonoBehaviour {
+        
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _score;
         [SerializeField] private Button _menuButton;
 
-        public void Init(UnityAction menuButtonAction) {
-            _menuButton.Subscribe(menuButtonAction);
-            Hide();
+
+        public void SubscribeOnMenuButtonClick(UnityAction callback) {
+            _menuButton.Subscribe(callback);
         }
 
         public void ShowWinWindow(string score) {

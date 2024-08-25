@@ -1,16 +1,16 @@
-﻿using R3;
+﻿using Memory2.Scripts.Game.Extensions;
+using R3;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Memory2.Scripts.Game.Meta.Root.View {
     public class UIMainMenuRootBinder : MonoBehaviour {
-        private Subject<Unit> _exitSceneSignalSubject;
+        [SerializeField] private Button _startGameplayButton;
 
-        public void HandleGoToGameplayButtonClick() {
-            _exitSceneSignalSubject?.OnNext(Unit.Default);
-        }
-
-        public void Bind(Subject<Unit> exitSceneSignalSubject) {
-            _exitSceneSignalSubject = exitSceneSignalSubject;
+        public void Bind(UnityAction startGameplay) {
+            _startGameplayButton.Subscribe(startGameplay);
         }
     }
 }
