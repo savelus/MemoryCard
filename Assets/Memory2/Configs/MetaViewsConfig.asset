@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce82fa698ac8479abbadf6ebefec95d6, type: 3}
+  m_Name: MetaViewsConfig
+  m_EditorClassIdentifier: 
+  _locationMapView: {fileID: 775324994205005294, guid: 22bf809288d846e42bd84f9f10031e6a, type: 3}
+  _locationView: {fileID: 122014632478488111, guid: 01658f0f6b713f14ca6805bf8f8907db, type: 3}

@@ -1,5 +1,7 @@
-﻿using Memory2.Scripts.Game.Core.Data;
+﻿using Memory2.Scripts.Game.Core.Configs;
+using Memory2.Scripts.Game.Core.Data;
 using Memory2.Scripts.Game.Core.View;
+using Memory2.Scripts.Game.Global.Data;
 using R3;
 using UnityEngine;
 using UnityEngine.Events;

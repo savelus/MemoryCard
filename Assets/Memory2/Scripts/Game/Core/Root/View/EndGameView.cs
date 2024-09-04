@@ -1,5 +1,5 @@
 using System;
-using Memory2.Scripts.Game.Extensions;
+using Memory2.Scripts.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,10 +11,15 @@ namespace Memory2.Scripts.Game.Core.Root.View {
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _score;
         [SerializeField] private Button _menuButton;
+        [SerializeField] private Button _restartButton;
 
 
         public void SubscribeOnMenuButtonClick(UnityAction callback) {
             _menuButton.Subscribe(callback);
+        }
+        
+        public void SubscribeOnRestartButtonClick(UnityAction callback) {
+            _restartButton.Subscribe(callback);
         }
 
         public void ShowWinWindow(string score) {

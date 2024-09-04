@@ -6,8 +6,16 @@ using Zenject;
 namespace Memory2.Scripts.Game.Core.Installers {
     public class CoreInstaller : MonoInstaller {
         public override void InstallBindings() {
+            InstallGameScope();
             InstallStateMachine();
             InstallServices();
+        }
+
+        private void InstallGameScope() {
+            Container
+                .Bind<GameScope>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void InstallServices() {

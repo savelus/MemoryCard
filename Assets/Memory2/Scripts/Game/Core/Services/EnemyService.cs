@@ -14,20 +14,24 @@ namespace Memory2.Scripts.Game.Core.Services {
         private readonly PrefabConfig _prefabConfig;
         private readonly UIGameplayRoot _uiGameplayRoot;
         private readonly EnemyConfig _enemyConfig;
-        
+        private readonly GameScope _gameScope;
+
         private EnemyPresenter _activeEnemy;
 
         public bool IsEnemyAlive { get; private set; }
         public event UnityAction EnemyDead; 
         
-        public EnemyService(PrefabConfig prefabConfig, UIGameplayRoot uiGameplayRoot, EnemyConfig enemyConfig) {
+        public EnemyService(PrefabConfig prefabConfig, 
+                            UIGameplayRoot uiGameplayRoot, 
+                            EnemyConfig enemyConfig) {
             _prefabConfig = prefabConfig;
             _uiGameplayRoot = uiGameplayRoot;
             _enemyConfig = enemyConfig;
         }
 
-        public void SpawnEnemy() {
-            var enemyData = _enemyConfig.GetRandomEnemy();
+        public void SpawnEnemy(string enemyId) {
+            
+            var enemyData = _enemyConfig.GetEnemyById(enemyId);
             var enemyView = Object.Instantiate(_prefabConfig.GetEnemyPrefab());
             _uiGameplayRoot.AddEnemy(enemyView.transform);
             

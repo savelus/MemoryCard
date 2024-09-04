@@ -1,5 +1,5 @@
 using System;
-using Memory2.Scripts.Game.Extensions;
+using Memory2.Scripts.Utils;
 using R3;
 using UnityEngine;
 using UnityEngine.Events;

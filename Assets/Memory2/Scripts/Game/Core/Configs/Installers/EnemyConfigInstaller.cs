@@ -8,7 +8,7 @@ namespace Memory2.Scripts.Game.Core.Configs.Installers {
         
         public override void InstallBindings() {
             Container
-                .Bind<EnemyConfig>()
+                .BindInterfacesAndSelfTo<EnemyConfig>()
                 .FromInstance(_enemyConfig)
                 .AsSingle()
                 .NonLazy();

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d593608647476692756eadc838e1dc, type: 3}
+  m_Name: LocationsConfig
+  m_EditorClassIdentifier: 
+  _locationsConfig:
+    Locations:
+    - Id: 0
+      Name: FirstLocation
+      ButtonSprite: {fileID: -838908008875007501, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
+      LevelIds: 00000000010000000200000003000000
+    LocationsButtonPrefab: {fileID: 4734624143500941763, guid: b01388cf86a839a4abba9dfa69c9e131, type: 3}
+    LevelButtonPrefab: {fileID: 7885869046851996067, guid: 8f892e9d1f06bea4e86648f236592574, type: 3}

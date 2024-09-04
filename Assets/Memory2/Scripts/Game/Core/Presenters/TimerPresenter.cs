@@ -1,10 +1,11 @@
-﻿using Memory2.Scripts.Game.Timer;
+﻿using Memory2.Scripts.Game.Core.View;
+using Memory2.Scripts.Game.Global.Timer;
 using UnityEngine;
 
 namespace Memory2.Scripts.Game.Core.Presenters {
     public class TimerPresenter {
         private readonly GameTimerView _timerView;
-        private readonly Timer.Timer _timer;
+        private readonly Timer _timer;
         private int _startTime;
 
 

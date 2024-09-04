@@ -10,6 +10,5 @@ namespace Memory2.Scripts.Game.Core.Installers {
                 .AsSingle()
                 .NonLazy();
         }
-        
     }
 }
