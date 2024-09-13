@@ -10,6 +10,10 @@ namespace Memory2.Scripts.Game.Core.Root.View {
         
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _score;
+
+        [SerializeField] private TextMeshProUGUI _money;
+        [SerializeField] private GameObject _moneyBlock;
+        
         [SerializeField] private Button _menuButton;
         [SerializeField] private Button _restartButton;
 
@@ -22,10 +26,12 @@ namespace Memory2.Scripts.Game.Core.Root.View {
             _restartButton.Subscribe(callback);
         }
 
-        public void ShowWinWindow(string score) {
+        public void ShowWinWindow(string score, string money) {
             _title.text = "Победа!";
             _score.text = score;
             _score.color = Color.green;
+            _moneyBlock.SetActive(true);
+            _money.text = money;
             gameObject.SetActive(true);
         }
         
@@ -33,6 +39,7 @@ namespace Memory2.Scripts.Game.Core.Root.View {
             _title.text = "Поражение";
             _score.text = score;
             _score.color = Color.red;
+            _moneyBlock.SetActive(false);
             gameObject.SetActive(true);
         }
 

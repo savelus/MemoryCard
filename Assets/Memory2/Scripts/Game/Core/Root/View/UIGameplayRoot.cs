@@ -16,6 +16,7 @@ namespace Memory2.Scripts.Game.Core.Root.View {
 
         public void Bind(UnityAction endGame) {
             _exitButton.Subscribe(endGame);
+            _endGameView.gameObject.SetActive(false);
         }
         
         public void AddCard(Transform card) {
@@ -28,15 +29,6 @@ namespace Memory2.Scripts.Game.Core.Root.View {
 
         public void AddTimer(Transform timerTransform) {
             timerTransform.SetParent(_timerRoot, false);
-        }
-
-        public void ShowEndGamePopUp(int score, bool isEnemyAlive) {
-            if (!isEnemyAlive) {
-                _endGameView.ShowWinWindow(score.ToString());    
-            }
-            else {
-                _endGameView.ShowLoseWindow(score.ToString());
-            }
         }
 
         public EndGameView GetEndGameView() {

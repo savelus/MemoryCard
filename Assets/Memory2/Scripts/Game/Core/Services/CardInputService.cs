@@ -81,7 +81,7 @@ namespace Memory2.Scripts.Game.Core.Services {
         }
 
         private void PairCard(CardPresenter firstCard, CardPresenter secondCard) {
-            _pointStorage.AddPoints(firstCard.GetDamage() + secondCard.GetDamage());
+            _pointStorage.Add(firstCard.GetDamage() + secondCard.GetDamage());
             _enemyService.DamageEnemy(firstCard.GetDamage() + secondCard.GetDamage());
             
             _activeCards.Remove(firstCard.CardId);

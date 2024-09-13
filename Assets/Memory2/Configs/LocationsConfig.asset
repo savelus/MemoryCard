@@ -18,5 +18,10 @@ MonoBehaviour:
       Name: FirstLocation
       ButtonSprite: {fileID: -838908008875007501, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
       LevelIds: 00000000010000000200000003000000
+    - Id: 1
+      Name: SecondLocation
+      ButtonSprite: {fileID: -838908008875007501, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
+      LevelIds: 00000000010000000200000003000000
     LocationsButtonPrefab: {fileID: 4734624143500941763, guid: b01388cf86a839a4abba9dfa69c9e131, type: 3}
     LevelButtonPrefab: {fileID: 7885869046851996067, guid: 8f892e9d1f06bea4e86648f236592574, type: 3}
+    ClosedButtonSprite: {fileID: -1980229905, guid: a5e645d0b2507ac42807ef8e886f7d45, type: 3}

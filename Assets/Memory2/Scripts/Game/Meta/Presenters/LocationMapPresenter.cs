@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Memory2.Scripts.Game.Global.Storages;
 using Memory2.Scripts.Game.Meta.Configs;
 using Memory2.Scripts.Game.Meta.Data;
 using Memory2.Scripts.Game.Meta.View;
@@ -10,14 +11,18 @@ namespace Memory2.Scripts.Game.Meta.Presenters {
         private readonly LocationMapView _mapView;
         private readonly LocationsConfig _locationsConfig;
         private readonly LocationPresenter _locationPresenter;
+        private readonly ProgressStorage _progressStorage;
+        
         private List<LocationButton> _buttons;
 
         public LocationMapPresenter(LocationMapView mapView,
                                     LocationsConfig locationsConfig,
-                                    LocationPresenter locationPresenter) {
+                                    LocationPresenter locationPresenter,
+                                    ProgressStorage progressStorage) {
             _mapView = mapView;
             _locationsConfig = locationsConfig;
             _locationPresenter = locationPresenter;
+            _progressStorage = progressStorage;
         }
 
         void IInitializable.Initialize() {
@@ -25,11 +30,18 @@ namespace Memory2.Scripts.Game.Meta.Presenters {
         }
 
         public void Open() {
+            var currentLocation = _progressStorage.GetCurrentLocation();
             ClearLastButtons();
             foreach (var (locationDataId, locationDataValue) in _locationsConfig.GetLocationsMap()) {
                 var button = CreateButton();
                 _buttons.Add(button);
-                button.Initialize(locationDataValue.ButtonSprite, () => OnLocationClicked(locationDataId));
+                if (locationDataId <= currentLocation) {
+                    button.Initialize(locationDataValue.ButtonSprite, true, () => OnLocationClicked(locationDataId));
+                }
+                else {
+                    button.Initialize(locationDataValue.ButtonSprite, false, null);
+                }
+                
             }
 
             _mapView.Open();

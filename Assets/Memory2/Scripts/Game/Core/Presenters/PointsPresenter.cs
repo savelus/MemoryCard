@@ -17,16 +17,16 @@ namespace Memory2.Scripts.Game.Core.Presenters {
         
         public void Initialize() {
             SetupView();
-            _pointStorage.PointsChanged += UpdatePoints;
+            _pointStorage.ValueChanged += UpdateValue;
             
-            UpdatePoints(_pointStorage.GetPoints());
+            UpdateValue(_pointStorage.Get());
         }
 
         private void SetupView() {
             _pointsView.transform.SetParent(_uiGameplayRoot.transform, false);
         }
 
-        private void UpdatePoints(int points) {
+        private void UpdateValue(int points) {
             _pointsView.SetPoints(points.ToString());
         }
     }

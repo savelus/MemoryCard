@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using Memory2.Scripts.Game.Global.Storages;
+using Memory2.Scripts.Game.Global.Storages.Root;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Memory2.Scripts.Game.Core.Storages {
-    public sealed class PointStorage {
-        public readonly string Key = "Points";
-        public event UnityAction<int> PointsChanged;
+    public sealed class PointStorage : ISave {
+        private const string Key = "Points";
+        public event UnityAction<int> ValueChanged;
 
         private int _points;
         
@@ -12,29 +15,37 @@ namespace Memory2.Scripts.Game.Core.Storages {
             _points = PlayerPrefs.GetInt(Key, 0);
         }
 
-        public int GetPoints() {
+        public int Get() {
             return _points;
         }
-        
-        public void AddPoints(int points) {
+
+        public void Set(int points) {
+            _points = points;
+            OnPointsChanged();
+        }
+        public void Add(int points) {
             _points += points;
             OnPointsChanged();
         }
         
-        public bool SubtractPoints(int points) {
+        public bool Subtract(int points) {
             if (points > _points) return false;
             _points -= points;
             OnPointsChanged();
             return true;
         }
-        
+
+        public string GetKey() {
+            return Key;
+        }
+
         public void Save() {
             PlayerPrefs.SetInt(Key, _points);
             PlayerPrefs.Save();
         }
 
         private void OnPointsChanged() {
-            PointsChanged?.Invoke(_points);
+            ValueChanged?.Invoke(_points);
         }
     }
 }

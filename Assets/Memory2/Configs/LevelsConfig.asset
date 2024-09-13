@@ -17,12 +17,16 @@ MonoBehaviour:
     - LevelId: 0
       Seconds: 10
       EnemyId: Valera
+      Money: 50
     - LevelId: 1
       Seconds: 15
       EnemyId: Dima
+      Money: 100
     - LevelId: 2
       Seconds: 20
       EnemyId: Misha
+      Money: 150
     - LevelId: 3
       Seconds: 30
       EnemyId: Kostya
+      Money: 200

@@ -7,5 +7,6 @@ namespace Memory2.Scripts.Game.Global.Data {
         public int LevelId;
         public int Seconds;
         public string EnemyId;
+        public int Money;
     }
 }

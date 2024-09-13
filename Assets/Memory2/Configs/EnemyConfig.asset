@@ -15,14 +15,14 @@ MonoBehaviour:
   _enemyConfig:
     Enemies:
     - Name: Valera
-      Health: 100
+      Health: 10
       Sprite: {fileID: 21300000, guid: 461f8caab7ff6f54aa9b0df8709ef5c0, type: 3}
     - Name: Dima
-      Health: 250
+      Health: 25
       Sprite: {fileID: 21300000, guid: 461f8caab7ff6f54aa9b0df8709ef5c0, type: 3}
     - Name: Misha
-      Health: 300
+      Health: 30
       Sprite: {fileID: 21300000, guid: 461f8caab7ff6f54aa9b0df8709ef5c0, type: 3}
     - Name: Kostya
-      Health: 400
+      Health: 40
       Sprite: {fileID: 21300000, guid: 461f8caab7ff6f54aa9b0df8709ef5c0, type: 3}
