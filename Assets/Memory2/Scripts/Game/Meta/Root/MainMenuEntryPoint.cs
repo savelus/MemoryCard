@@ -44,7 +44,7 @@ namespace Memory2.Scripts.Game.Meta.Root {
         }
 
         private GameplayEnterParams CreateGameplayEnterParams() {
-            return new GameplayEnterParams(_levelsConfig.GetRandomLevel());
+            return new GameplayEnterParams(_levelsConfig.GetRandomLevel(), 0, 0);
         }
         
     }

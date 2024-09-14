@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Memory2.Scripts.Game.Core;
 using Memory2.Scripts.Game.Core.Root;
 using Memory2.Scripts.Game.Global.Configs;
 using Memory2.Scripts.Game.Global.GameRoot;
@@ -49,7 +50,7 @@ namespace Memory2.Scripts.Game.Meta.Presenters {
                 var button = Object.Instantiate(buttonPrefab);
                 var levelId = locationData.LevelIds[i];
                 if (currentLevel >= i) {
-                    button.Initialize(levelId.ToString(), true, () => OnLevelClicked(levelId));
+                    button.Initialize(levelId.ToString(), true, () => OnLevelClicked(levelId, locationData.Id));
                 }
                 else {
                     button.Initialize(levelId.ToString(), false);
@@ -60,8 +61,8 @@ namespace Memory2.Scripts.Game.Meta.Presenters {
             }
         }
 
-        private void OnLevelClicked(int levelId) {
-            _gameEntryPoint.LoadGameplayScene(new GameplayEnterParams(_levelsConfig.GetLevelById(levelId)));
+        private void OnLevelClicked(int levelId, int locationDataId) {
+            _gameEntryPoint.LoadGameplayScene(new GameplayEnterParams(_levelsConfig.GetLevelById(levelId), locationDataId, levelId));
         }
 
         private void OnCloseButtonClicked() {

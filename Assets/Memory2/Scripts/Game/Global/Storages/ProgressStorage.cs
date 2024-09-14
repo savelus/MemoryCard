@@ -10,42 +10,44 @@ namespace Memory2.Scripts.Game.Global.Storages {
         
         private readonly LocationsConfig _locationsConfig;
 
-        private Vector2 _currentLocationWithLevel;
+        private int _currentLocation;
+        private int _currentLevel;
 
         public ProgressStorage(LocationsConfig locationsConfig) {
             _locationsConfig = locationsConfig;
         }
         
         void IInitializable.Initialize() {
-            if (PlayerPrefs.HasKey(Key))
-                _currentLocationWithLevel = JsonUtility.FromJson<Vector2>(PlayerPrefs.GetString(Key));
-            else
-                _currentLocationWithLevel = Vector2Int.zero;
+            _currentLocation = PlayerPrefs.HasKey(Key + nameof(_currentLocation))
+                ? PlayerPrefs.GetInt(Key + nameof(_currentLocation))
+                : 0;
+            
+            _currentLevel = PlayerPrefs.HasKey(Key + nameof(_currentLevel))
+                ? PlayerPrefs.GetInt(Key + nameof(_currentLevel))
+                : 0;
         }
 
         public string GetKey() => Key;
 
-        public Vector2 GetCurrentLocationWithLevel() {
-            return _currentLocationWithLevel;
-        }
+        public int GetCurrentLocation() => _currentLocation;
+        public int GetCurrentLevel() => _currentLevel;
 
-        public int GetCurrentLocation() => (int)_currentLocationWithLevel.x;
-        public int GetCurrentLevel() => (int)_currentLocationWithLevel.y;
-
-        public void CompleteLevel() {
-            var levelsCount = _locationsConfig.GetLevelsCountOnLocation((int)_currentLocationWithLevel.x);
-            if (_currentLocationWithLevel.y + 1 >= levelsCount) {
-                _currentLocationWithLevel.x++;
-                _currentLocationWithLevel.y = 0;
+        public void CompleteLevel(int passedLocation, int passedLevel) {
+            if (passedLocation != _currentLocation || passedLevel != _currentLevel) return;
+            
+            var levelsCount = _locationsConfig.GetLevelsCountOnLocation(_currentLocation);
+            if (_currentLevel + 1 >= levelsCount) {
+                _currentLocation++;
+                _currentLevel = 0;
             }
             else {
-                _currentLocationWithLevel.y++;
+                _currentLevel++;
             }
         }
 
         public void Save() {
-            var json = JsonUtility.ToJson(_currentLocationWithLevel);
-            PlayerPrefs.SetString(Key, json);
+            PlayerPrefs.SetInt(Key + nameof(_currentLocation), _currentLocation);
+            PlayerPrefs.SetInt(Key + nameof(_currentLevel), _currentLevel);
         }
     }
 }

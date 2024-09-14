@@ -40,7 +40,7 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
             var isEnemyAlive = _enemyService.IsEnemyAlive;
             _timerFactory.ReleaseTimer(TimerKey.Game);
             if (!isEnemyAlive) {
-                _progressStorage.CompleteLevel();
+                _progressStorage.CompleteLevel(_gameScope.Location, _gameScope.Level);
                 _progressStorage.Save();
             }
             
@@ -70,7 +70,7 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
         }
 
         private GameplayEnterParams CreateGameSceneEnterParams() {
-            return new GameplayEnterParams(_gameScope.LevelData);
+            return new GameplayEnterParams(_gameScope.LevelData, _gameScope.Location, _gameScope.Level);
         }
 
         private MainMenuEnterParams CreateMainMenuEnterParams() {

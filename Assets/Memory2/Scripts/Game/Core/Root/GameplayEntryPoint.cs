@@ -31,6 +31,8 @@ namespace Memory2.Scripts.Game.Core.Root {
         
         public void Run(UIRootView uiRootView, GameplayEnterParams enterParams) {
             _gameScope.LevelData = enterParams.LevelData;
+            _gameScope.Level = enterParams.Level;
+            _gameScope.Location = enterParams.Location;
             uiRootView.AttachSceneUI(_uiGameplayRoot.gameObject);
             _uiGameplayRoot.Bind(() => _stateMachine.ChangeState(_endGameState));
             
