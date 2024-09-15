@@ -13,10 +13,13 @@ namespace Memory2.Scripts.Game.Global.Storages {
         private int _currentLocation;
         private int _currentLevel;
 
+        public int CurrentLocation => _currentLocation;
+        public int CurrentLevel() => _currentLevel;
+
         public ProgressStorage(LocationsConfig locationsConfig) {
             _locationsConfig = locationsConfig;
         }
-        
+
         void IInitializable.Initialize() {
             _currentLocation = PlayerPrefs.HasKey(Key + nameof(_currentLocation))
                 ? PlayerPrefs.GetInt(Key + nameof(_currentLocation))
@@ -29,8 +32,6 @@ namespace Memory2.Scripts.Game.Global.Storages {
 
         public string GetKey() => Key;
 
-        public int GetCurrentLocation() => _currentLocation;
-        public int GetCurrentLevel() => _currentLevel;
 
         public void CompleteLevel(int passedLocation, int passedLevel) {
             if (passedLocation != _currentLocation || passedLevel != _currentLevel) return;

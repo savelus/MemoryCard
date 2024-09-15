@@ -1,35 +1,40 @@
 ﻿using Memory2.Scripts.Game.Core.Data;
 using Memory2.Scripts.Game.Core.View;
+using Memory2.Scripts.Game.Global.Configs.Elements;
 using R3;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Memory2.Scripts.Game.Core.Presenters {
     public class CardPresenter {
         public event UnityAction<CardPresenter> CardClicked;
-        
-        private CardData _cardData;
+
+        public CardData CardData { get; private set; }
         private CardView _cardView;
+
         private Color _backColor;
+        private readonly Sprite _elementSprite;
 
-        public int CardId => _cardData.Id;
+        public int CardId => CardData.Id;
 
-        public CardPresenter(CardView cardView, CardData cardData, Color backColor) {
+        public CardPresenter(CardView cardView, CardData cardData, Color backColor, Sprite elementSprite) {
             _cardView = cardView;
-            _cardData = cardData;
+            CardData = cardData;
             _backColor = backColor;
+            _elementSprite = elementSprite;
         }
-        
+
         public void Initialize(int cardIndex) {
             CardClicked = null;
-            _cardView.ChangeDamage(_cardData.Damage);
+            _cardView.ChangeDamage(CardData.Damage);
             _cardView.SubscribeOnCardClicked(() => CardClicked?.Invoke(this));
             SetSiblingIndex(cardIndex);
             CloseCard();
         }
 
         public void OpenCard() {
-            _cardView.OpenCard(_cardData.Color);
+            _cardView.OpenCard(CardData.Color, _elementSprite);
         }
 
         public void CloseCard() {
@@ -42,7 +47,7 @@ namespace Memory2.Scripts.Game.Core.Presenters {
         }
 
         public int GetDamage() {
-            return _cardData.Damage;
+            return CardData.Damage;
         }
 
         public void SetSiblingIndex(int index) {

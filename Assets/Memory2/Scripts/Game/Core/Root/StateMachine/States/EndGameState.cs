@@ -54,10 +54,10 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
         private void ShowEndGamePopUp(EndGameView endGameView, bool isEnemyAlive) {
             _isEnemyAlive = isEnemyAlive;
             if (!isEnemyAlive) {
-                endGameView.ShowWinWindow(_pointStorage.Get().ToString(), _gameScope.LevelData.Money.ToString());
+                endGameView.ShowWinWindow(_pointStorage.Get().ToString("F1"), _gameScope.LevelData.Money.ToString());
             }
             else {
-                endGameView.ShowLoseWindow(_pointStorage.Get().ToString());
+                endGameView.ShowLoseWindow(_pointStorage.Get().ToString("F1"));
             }
         }
 

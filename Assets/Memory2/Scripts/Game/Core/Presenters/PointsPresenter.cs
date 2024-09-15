@@ -26,8 +26,8 @@ namespace Memory2.Scripts.Game.Core.Presenters {
             _pointsView.transform.SetParent(_uiGameplayRoot.transform, false);
         }
 
-        private void UpdateValue(int points) {
-            _pointsView.SetPoints(points.ToString());
+        private void UpdateValue(float points) {
+            _pointsView.SetPoints(points.ToString("F1"));
         }
     }
 }

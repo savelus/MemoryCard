@@ -28,6 +28,11 @@ namespace Memory2.Scripts.Game.Core.Installers {
                 .Bind<EnemyService>()
                 .AsSingle()
                 .NonLazy();
+            
+            Container
+                .Bind<DamageService>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void InstallStateMachine() {

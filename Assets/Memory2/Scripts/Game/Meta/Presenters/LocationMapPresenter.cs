@@ -30,7 +30,7 @@ namespace Memory2.Scripts.Game.Meta.Presenters {
         }
 
         public void Open() {
-            var currentLocation = _progressStorage.GetCurrentLocation();
+            var currentLocation = _progressStorage.CurrentLocation;
             ClearLastButtons();
             foreach (var (locationDataId, locationDataValue) in _locationsConfig.GetLocationsMap()) {
                 var button = CreateButton();

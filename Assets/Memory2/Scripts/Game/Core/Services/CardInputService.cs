@@ -11,13 +11,18 @@ namespace Memory2.Scripts.Game.Core.Services {
         
         private readonly PointStorage _pointStorage;
         private readonly EnemyService _enemyService;
+        private readonly DamageService _damageService;
+        
         private CardPresenter _firstPickedCard;
         private CardPresenter _secondPickedCard;
         private HashSet<int> _activeCards = new();
 
-        public CardInputService(PointStorage pointStorage, EnemyService enemyService) {
+        public CardInputService(PointStorage pointStorage, 
+                                EnemyService enemyService,
+                                DamageService damageService) {
             _pointStorage = pointStorage;
             _enemyService = enemyService;
+            _damageService = damageService;
         }
         
         public void SubscribeAllCards(CardPresenter[] cardPresenters) {
@@ -74,15 +79,13 @@ namespace Memory2.Scripts.Game.Core.Services {
                 .AppendInterval(0.5f)
                 .AppendCallback(()=> {
                     PairCard(localFirstCard, localSecondCard);
-                    
                 });
             sequence.Play();
             return true;
         }
 
         private void PairCard(CardPresenter firstCard, CardPresenter secondCard) {
-            _pointStorage.Add(firstCard.GetDamage() + secondCard.GetDamage());
-            _enemyService.DamageEnemy(firstCard.GetDamage() + secondCard.GetDamage());
+            _damageService.DamageByCards(firstCard.CardData);
             
             _activeCards.Remove(firstCard.CardId);
             firstCard.RemoveCard();

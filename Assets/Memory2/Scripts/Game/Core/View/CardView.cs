@@ -1,5 +1,4 @@
-﻿
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,8 +9,10 @@ namespace Memory2.Scripts.Game.Core.View {
         
         [SerializeField] private TextMeshProUGUI _damage;
         [SerializeField] private Image _image;
+        [SerializeField] private Image _element;
         [SerializeField] private Button _button;
         [SerializeField] private GameObject _root;
+        [SerializeField] private GameObject _openSide;
         private void Awake() {
             _button.onClick.AddListener(()=> CardClicked?.Invoke());
         }
@@ -37,16 +38,17 @@ namespace Memory2.Scripts.Game.Core.View {
             _root.SetActive(false);
         }
 
-        public void OpenCard(Color frontSideColor) {
+        public void OpenCard(Color frontSideColor, Sprite element) {
             _root.SetActive(true);
             _image.color = frontSideColor;
-            _damage.gameObject.SetActive(true);
+            _element.sprite = element;
+            _openSide.SetActive(true);
         }
         
         public void CloseCard(Color backSideColor) {
             _root.SetActive(true);
             _image.color = backSideColor;
-            _damage.gameObject.SetActive(false);
+            _openSide.SetActive(false);
         }
     }
 }

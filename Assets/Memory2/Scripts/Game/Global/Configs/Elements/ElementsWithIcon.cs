@@ -2,13 +2,10 @@
 using Memory2.Scripts.Game.Global.Enums;
 using UnityEngine;
 
-namespace Memory2.Scripts.Game.Core.Data {
+namespace Memory2.Scripts.Game.Global.Configs.Elements {
     [Serializable]
-    public class CardData {
-        public int Id;
+    public class ElementsWithIcon {
         public Element Type;
-        public int Damage;
-        public Color Color;
         public Sprite Sprite;
     }
 }

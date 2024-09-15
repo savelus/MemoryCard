@@ -5,15 +5,21 @@ using UnityEngine.UI;
 namespace Memory2.Scripts.Game.Core.View {
     public class EnemyView : MonoBehaviour {
         [SerializeField] private Image _image;
+        [SerializeField] private Image _element;
         [SerializeField] private TextMeshProUGUI _health;
         [SerializeField] private TextMeshProUGUI _name;
 
-        public void InitView(string enemyName, string health, Sprite sprite) {
+        public void InitView(string enemyName, string health, Sprite enemy, Sprite element) {
             SetName(enemyName);
             SetHealth(health);
-            SetImage(sprite);
+            SetImage(enemy);
+            SetElement(element);
         }
-        
+
+        public void SetElement(Sprite element) {
+            _element.sprite = element;
+        }
+
         public void SetName(string enemyName) {
             _name.text = enemyName;
         }

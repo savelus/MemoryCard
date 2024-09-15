@@ -18,26 +18,32 @@ MonoBehaviour:
     CardPrefab: {fileID: 6394619746739569626, guid: 19ccfbba06d23ad41be1d6240bf9da43, type: 3}
     Cards:
     - Id: 0
+      Type: 1
       Damage: 0
       Color: {r: 0.92549026, g: 0.8745099, b: 0, a: 1}
       Sprite: {fileID: 0}
     - Id: 1
+      Type: 1
       Damage: 20
       Color: {r: 0.86666673, g: 0.1137255, b: 0.10588236, a: 1}
       Sprite: {fileID: 0}
     - Id: 2
+      Type: 2
       Damage: 0
       Color: {r: 0.14117648, g: 0.43137258, b: 0.6745098, a: 1}
       Sprite: {fileID: 0}
     - Id: 3
+      Type: 2
       Damage: 15
       Color: {r: 0.91372555, g: 0.54509807, b: 0.08235294, a: 1}
       Sprite: {fileID: 0}
     - Id: 4
+      Type: 3
       Damage: 5
       Color: {r: 0.4156863, g: 0.20392159, b: 0.53333336, a: 1}
       Sprite: {fileID: 0}
     - Id: 5
+      Type: 4
       Damage: 10
       Color: {r: 0, g: 0.54509807, b: 0.34509805, a: 1}
       Sprite: {fileID: 0}

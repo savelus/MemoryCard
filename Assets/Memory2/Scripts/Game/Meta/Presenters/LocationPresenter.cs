@@ -43,8 +43,12 @@ namespace Memory2.Scripts.Game.Meta.Presenters {
 
         private void SpawnButtons(LocationData locationData) {
             _levelButtons.Clear();
-            var currentLevel = _progressStorage.GetCurrentLevel();
-            
+            var currentLocation = _progressStorage.CurrentLocation;
+            var currentLevel = _progressStorage.CurrentLevel();
+            if (currentLocation > locationData.Id) {
+                currentLevel = locationData.LevelIds.Count + 1;
+            }
+
             var buttonPrefab = _locationsConfig.LevelButtonPrefab;
             for (var i = 0; i < locationData.LevelIds.Count; i++) {
                 var button = Object.Instantiate(buttonPrefab);

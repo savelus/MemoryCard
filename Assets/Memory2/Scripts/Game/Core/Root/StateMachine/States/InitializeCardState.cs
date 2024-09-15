@@ -5,6 +5,7 @@ using Memory2.Scripts.Game.Core.Presenters;
 using Memory2.Scripts.Game.Core.Root.StateMachine.Base;
 using Memory2.Scripts.Game.Core.Root.View;
 using Memory2.Scripts.Game.Core.Services;
+using Memory2.Scripts.Game.Global.Configs.Elements;
 using Unity.Collections;
 using UnityEngine;
 using Random = System.Random;
@@ -13,13 +14,20 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
     public class InitializeCardState : State {
         private readonly UIGameplayRoot _uiGameplayRoot;
         private readonly InitializeEnemyState _initializeEnemyState;
+        private readonly ElementsIconConfig _elementsIconConfig;
         private readonly CardsConfig _cardsConfig;
         private readonly CardInputService _cardInputService;
         private CardPresenter[] _cardPresenters;
 
-        public InitializeCardState(Base.StateMachine stateMachine, CardsConfig cardsConfig, CardInputService cardInputService, UIGameplayRoot uiGameplayRoot, InitializeEnemyState initializeEnemyState) : base(stateMachine) {
+        public InitializeCardState(Base.StateMachine stateMachine, 
+                                   CardsConfig cardsConfig, 
+                                   CardInputService cardInputService, 
+                                   UIGameplayRoot uiGameplayRoot, 
+                                   InitializeEnemyState initializeEnemyState,
+                                   ElementsIconConfig elementsIconConfig) : base(stateMachine) {
             _uiGameplayRoot = uiGameplayRoot;
             _initializeEnemyState = initializeEnemyState;
+            _elementsIconConfig = elementsIconConfig;
             _cardsConfig = cardsConfig;
             _cardInputService = cardInputService;
         }
@@ -37,9 +45,11 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
             var cardPrefab = _cardsConfig.CardPrefab;
             for (int i = 0; i < cardsCount; i++) {
                 var card = Object.Instantiate(cardPrefab);
+                var cardData = cardsData[i / 2];
                 card.gameObject.name = "Card " + i;
                 _uiGameplayRoot.AddCard(card.transform);
-                presenters[i] = new CardPresenter(card, cardsData[i / 2], _cardsConfig.CardBackSideColor);
+                var elementSprite = _elementsIconConfig.GetSprite(cardData.Type);
+                presenters[i] = new CardPresenter(card, cardData, _cardsConfig.CardBackSideColor, elementSprite);
             }
 
             return presenters;

@@ -1,4 +1,4 @@
-﻿namespace Memory2.Scripts.Game.Global.Data {
+﻿namespace Memory2.Scripts.Game.Global.Enums {
     public enum Element {
         None = 0,
         Fire = 1,
