@@ -29,7 +29,7 @@ MonoBehaviour:
       _controller:
         GuidAssignmentFailed: 0
         GUID: c29ca2a76c12460aabfb3285d3b25dbb
-        _typeNameAndAssembly: Memory2.Scripts.Game.Meta.Presenters.CardCollection.CardCollectionPresenter,
+        _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.CardCollection.CardCollectionPresenter,
           Assembly-CSharp
         _suppressLogs: 0
     - Uid: 9e323f68-1501-4a47-a7b1-0a607a93e496
@@ -47,7 +47,7 @@ MonoBehaviour:
       _controller:
         GuidAssignmentFailed: 0
         GUID: 54d7f969ee3b442da206b40e79323d55
-        _typeNameAndAssembly: Memory2.Scripts.Game.Meta.Presenters.LocationMap.LocationPresenter,
+        _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.LocationMap.LocationPresenter,
           Assembly-CSharp
         _suppressLogs: 0
     - Uid: 35f5e989-6d5b-4193-83fb-73ce6e7b603d
@@ -65,7 +65,7 @@ MonoBehaviour:
       _controller:
         GuidAssignmentFailed: 0
         GUID: 5deb673ec28b4a5baa4f76f514e9496b
-        _typeNameAndAssembly: Memory2.Scripts.Game.Meta.Presenters.LocationMap.LocationMapPresenter,
+        _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.LocationMap.LocationMapPresenter,
           Assembly-CSharp
         _suppressLogs: 0
     - Uid: cff577cb-407d-407d-918e-aed50c9b173a
@@ -83,10 +83,10 @@ MonoBehaviour:
       _controller:
         GuidAssignmentFailed: 0
         GUID: b0a725a8541a8c3409f99bcc1c625aad
-        _typeNameAndAssembly: Memory2.Scripts.Game.Meta.Presenters.Shop.ShopPresenter,
+        _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.Shop.ShopPresenter,
           Assembly-CSharp
         _suppressLogs: 0
-    - Uid: 
+    - Uid: f4522a0c-1784-489b-a837-121bd9864d32
       PrefabReference:
         m_AssetGUID: 19b9d04662baf9e4aa14e7d077faf4e3
         m_SubObjectName: 
@@ -101,6 +101,6 @@ MonoBehaviour:
       _controller:
         GuidAssignmentFailed: 0
         GUID: 6ade3af9cd8e8454089aa21ab05b59ea
-        _typeNameAndAssembly: Memory2.Scripts.Game.Core.Presenters.EndGamePresenter,
+        _typeNameAndAssembly: Memory2.Scripts.Game.MVP.Presenters.EndGamePresenter,
           Assembly-CSharp
         _suppressLogs: 0
