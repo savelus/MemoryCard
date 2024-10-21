@@ -30,14 +30,9 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
             var seconds = _gameScope.LevelData.Seconds;
             var timer = _timerFactory.GetTimer(TimerKey.Game);
             timer.TimerEnded += OnTimerEnded;
-            timer.SecondPassed += OnSecondPassed;
             timer.Start(seconds);
             
             _uiGameplayRoot.AddTimer(_timerPresenter.GetTransform());
-        }
-
-        private void OnSecondPassed() {
-            Debug.Log("Tick");
         }
 
         private void OnTimerEnded() {

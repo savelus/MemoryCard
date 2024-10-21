@@ -14,7 +14,7 @@ namespace Memory2.Scripts.Game.Global.Storages {
         private int _currentLevel;
 
         public int CurrentLocation => _currentLocation;
-        public int CurrentLevel() => _currentLevel;
+        public int CurrentLevel => _currentLevel;
 
         public ProgressStorage(LocationsConfig locationsConfig) {
             _locationsConfig = locationsConfig;

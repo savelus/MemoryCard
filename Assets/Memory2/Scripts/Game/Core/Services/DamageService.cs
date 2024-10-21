@@ -1,6 +1,8 @@
 ﻿using Memory2.Scripts.Game.Core.Data;
 using Memory2.Scripts.Game.Core.Storages;
+using Memory2.Scripts.Game.Global.Configs.Cards;
 using Memory2.Scripts.Game.Global.Configs.Elements;
+using Memory2.Scripts.Game.Global.Data;
 using Memory2.Scripts.Game.Global.Enums;
 
 namespace Memory2.Scripts.Game.Core.Services {
@@ -20,7 +22,7 @@ namespace Memory2.Scripts.Game.Core.Services {
             _dependencyPowerConfig = dependencyPowerConfig;
         }
         
-        public void DamageByCards(CardData pairedCards) {
+        public void DamageByCards(CardInfo pairedCards) {
             var damage = pairedCards.Damage * GetCoefficient(pairedCards.Type, _enemyService.CurrentEnemyType);
             _pointStorage.Add(damage);
             _enemyService.DamageEnemy(damage);

@@ -5,16 +5,21 @@ using Memory2.Scripts.Game.Core.Presenters;
 using Memory2.Scripts.Game.Core.Root.StateMachine.Base;
 using Memory2.Scripts.Game.Core.Root.View;
 using Memory2.Scripts.Game.Core.Services;
+using Memory2.Scripts.Game.Global.Configs.Cards;
 using Memory2.Scripts.Game.Global.Configs.Elements;
+using Memory2.Scripts.Game.Global.Data;
+using Memory2.Scripts.Game.Global.Services;
+using ObservableCollections;
 using Unity.Collections;
 using UnityEngine;
 using Random = System.Random;
 
 namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
-    public class InitializeCardState : State {
+    public sealed class InitializeCardState : State {
         private readonly UIGameplayRoot _uiGameplayRoot;
         private readonly InitializeEnemyState _initializeEnemyState;
         private readonly ElementsIconConfig _elementsIconConfig;
+        private readonly CardCollectionService _cardCollectionService;
         private readonly CardsConfig _cardsConfig;
         private readonly CardInputService _cardInputService;
         private CardPresenter[] _cardPresenters;
@@ -24,23 +29,25 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
                                    CardInputService cardInputService, 
                                    UIGameplayRoot uiGameplayRoot, 
                                    InitializeEnemyState initializeEnemyState,
-                                   ElementsIconConfig elementsIconConfig) : base(stateMachine) {
+                                   ElementsIconConfig elementsIconConfig,
+                                   CardCollectionService cardCollectionService) : base(stateMachine) {
             _uiGameplayRoot = uiGameplayRoot;
             _initializeEnemyState = initializeEnemyState;
             _elementsIconConfig = elementsIconConfig;
+            _cardCollectionService = cardCollectionService;
             _cardsConfig = cardsConfig;
             _cardInputService = cardInputService;
         }
 
         public override void Enter() {
-            _cardPresenters = InitPresenters(_cardsConfig.CardCount, _cardsConfig.Cards);
+            _cardPresenters = InitPresenters(_cardsConfig.CardCount, _cardCollectionService.GetCardCollection());
             _cardInputService.CardsEnded += ReFillCards;
             ReFillCards();
 
             _stateMachine.ChangeState(_initializeEnemyState);
         }
 
-        private CardPresenter[] InitPresenters(int cardsCount, List<CardData> cardsData) {
+        private CardPresenter[] InitPresenters(int cardsCount, ObservableList<CardInfo> cardsData) {
             var presenters = new CardPresenter[cardsCount];
             var cardPrefab = _cardsConfig.CardPrefab;
             for (int i = 0; i < cardsCount; i++) {
@@ -49,7 +56,7 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
                 card.gameObject.name = "Card " + i;
                 _uiGameplayRoot.AddCard(card.transform);
                 var elementSprite = _elementsIconConfig.GetSprite(cardData.Type);
-                presenters[i] = new CardPresenter(card, cardData, _cardsConfig.CardBackSideColor, elementSprite);
+                presenters[i] = new(card, cardData, _cardsConfig.CardBackSideColor, elementSprite);
             }
 
             return presenters;

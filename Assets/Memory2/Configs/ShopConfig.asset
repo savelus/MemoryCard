@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b906820130743d19877907019448a36, type: 3}
+  m_Name: ShopConfig
+  m_EditorClassIdentifier: 
+  _shopWindow: {fileID: 123433790391603640, guid: 97329976592cf0e4586ffe4464ad2db4, type: 3}
+  _shopConfig:
+    _unlocks:
+    - Location: 0
+      Level: 1
+      CardIds: 06000000
+    _shopElement: {fileID: 7839753265191041909, guid: e54b8b0caa686dd408b2574843ee4868, type: 3}

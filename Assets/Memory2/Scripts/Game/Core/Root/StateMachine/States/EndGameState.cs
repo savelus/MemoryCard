@@ -1,39 +1,38 @@
-﻿using Memory2.Scripts.Game.Core.Root.StateMachine.Base;
-using Memory2.Scripts.Game.Core.Root.View;
+﻿using Memory2.Scripts.Game.Core.Presenters;
+using Memory2.Scripts.Game.Core.Root.StateMachine.Base;
 using Memory2.Scripts.Game.Core.Services;
-using Memory2.Scripts.Game.Core.Storages;
 using Memory2.Scripts.Game.Global.GameRoot;
+using Memory2.Scripts.Game.Global.MVP.Enums;
+using Memory2.Scripts.Game.Global.MVP.Signals;
 using Memory2.Scripts.Game.Global.Storages;
 using Memory2.Scripts.Game.Global.Timer;
 using Memory2.Scripts.Game.Meta.Root;
+using Zenject;
 
 namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
     public sealed class EndGameState : State {
         private readonly GameEntryPoint _gameEntryPoint;
-        private readonly UIGameplayRoot _uiGameplayRoot;
-        private readonly PointStorage _pointStorage;
         private readonly TimerFactory _timerFactory;
         private readonly EnemyService _enemyService;
         private readonly GameScope _gameScope;
         private readonly ProgressStorage _progressStorage;
+        private readonly SignalBus _signalBus;
 
         private bool _isEnemyAlive;
 
         public EndGameState(Base.StateMachine stateMachine,
-            GameEntryPoint gameEntryPoint,
-            UIGameplayRoot uiGameplayRoot,
-            PointStorage pointStorage,
-            TimerFactory timerFactory,
-            EnemyService enemyService,
-            GameScope gameScope,
-            ProgressStorage progressStorage) : base(stateMachine) {
+                            GameEntryPoint gameEntryPoint,
+                            TimerFactory timerFactory,
+                            EnemyService enemyService,
+                            GameScope gameScope,
+                            ProgressStorage progressStorage,
+                            SignalBus signalBus) : base(stateMachine) {
             _gameEntryPoint = gameEntryPoint;
-            _uiGameplayRoot = uiGameplayRoot;
-            _pointStorage = pointStorage;
             _timerFactory = timerFactory;
             _enemyService = enemyService;
             _gameScope = gameScope;
             _progressStorage = progressStorage;
+            _signalBus = signalBus;
         }
 
         public override void Enter() {
@@ -44,21 +43,8 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
                 _progressStorage.Save();
             }
             
-            var endGameView = _uiGameplayRoot.GetEndGameView();
-            endGameView.SubscribeOnMenuButtonClick(OnMenuButtonClick);
-            endGameView.SubscribeOnRestartButtonClick(OnRestartButtonClick);
-            
-            ShowEndGamePopUp(endGameView, isEnemyAlive);
-        }
-
-        private void ShowEndGamePopUp(EndGameView endGameView, bool isEnemyAlive) {
-            _isEnemyAlive = isEnemyAlive;
-            if (!isEnemyAlive) {
-                endGameView.ShowWinWindow(_pointStorage.Get().ToString("F1"), _gameScope.LevelData.Money.ToString());
-            }
-            else {
-                endGameView.ShowLoseWindow(_pointStorage.Get().ToString("F1"));
-            }
+            _signalBus.Fire(new OpenWindowSignal(WindowKey.EndGame, 
+                new EndGameData {IsWin = !_isEnemyAlive, OnMenuButtonClick = OnMenuButtonClick, OnRestartButtonClick = OnRestartButtonClick}));
         }
 
         private void OnMenuButtonClick() {
@@ -70,11 +56,11 @@ namespace Memory2.Scripts.Game.Core.Root.StateMachine.States {
         }
 
         private GameplayEnterParams CreateGameSceneEnterParams() {
-            return new GameplayEnterParams(_gameScope.LevelData, _gameScope.Location, _gameScope.Level);
+            return new(_gameScope.LevelData, _gameScope.Location, _gameScope.Level);
         }
 
         private MainMenuEnterParams CreateMainMenuEnterParams() {
-            return new MainMenuEnterParams(_gameScope.LevelData, !_isEnemyAlive);
+            return new(_gameScope.LevelData, !_isEnemyAlive);
         }
     }
 }

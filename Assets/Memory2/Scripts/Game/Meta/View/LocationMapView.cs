@@ -1,26 +1,21 @@
-using System;
-using Memory2.Scripts.Game.Global.MVP;
-using Memory2.Scripts.Utils;
+using Memory2.Scripts.Game.Global.MVP.Base;
+using Memory2.Scripts.Game.Global.MVP.VisibilityMechanisms;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Memory2.Scripts.Game.Meta.View {
-    public class LocationMapView : BaseWindow {
+    public class LocationMapView : BaseWindow, ILocationMapView {
+        [SerializeField] private CanvasGroup _group;
         [SerializeField] private TextMeshProUGUI _label;
         [SerializeField] private Transform _locationsButtonRoot;
-
-        public void SetLabelText(string text) {
-            _label.text = text;
+        
+        protected override void OnEnable() {
+            ChangeShowMechanism(new FadeShowMechanism(_group));
+            ChangeHideMechanism(new FadeHideMechanism(_group));
         }
         
         public void AddLocationButton(Transform buttonTransform) {
             buttonTransform.SetParent(_locationsButtonRoot, false);
-        }
-
-        public void SubscribeOnCloseButton(UnityAction action) {
-            _closeButton.Subscribe(action);
         }
     }
 }

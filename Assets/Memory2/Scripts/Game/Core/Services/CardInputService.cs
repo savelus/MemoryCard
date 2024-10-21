@@ -64,6 +64,7 @@ namespace Memory2.Scripts.Game.Core.Services {
             _firstPickedCard = null;
             _secondPickedCard = null;
         }
+
         private void CloseCards(CardPresenter firsCard, CardPresenter secondCard) {
             firsCard.CloseCard();
             secondCard.CloseCard();
@@ -85,7 +86,7 @@ namespace Memory2.Scripts.Game.Core.Services {
         }
 
         private void PairCard(CardPresenter firstCard, CardPresenter secondCard) {
-            _damageService.DamageByCards(firstCard.CardData);
+            _damageService.DamageByCards(firstCard.CardInfo);
             
             _activeCards.Remove(firstCard.CardId);
             firstCard.RemoveCard();

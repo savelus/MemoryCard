@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Windows
+  m_EditorClassIdentifier: 
+  m_GroupName: Windows
+  m_GUID: c89acdbeac52671408023be4e86ccc80
+  m_SerializeEntries:
+  - m_GUID: 9d637a08860c6e546b93b26f3b2898da
+    m_Address: CardCollectionWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 01658f0f6b713f14ca6805bf8f8907db
+    m_Address: Location
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 08a8976fbe8920a459b94a1ecf64d41b
+    m_Address: LocationsMap
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97329976592cf0e4586ffe4464ad2db4
+    m_Address: ShopWindow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19b9d04662baf9e4aa14e7d077faf4e3
+    m_Address: EndGamePopUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: fa8a29907bd931a4bbfd95822d71a192, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d00f7555d55d538418d2958e1d1c6bf3, type: 2}
+    - {fileID: 11400000, guid: 534e89bc54bf27c42a72caccee75cd46, type: 2}

@@ -11,7 +11,7 @@ namespace Memory2.Scripts.Game.Core.Configs {
         [SerializeField] private List<EnemyData> Enemies;
 
         void IInitializable.Initialize() {
-            _enemies = new Dictionary<string, EnemyData>();
+            _enemies = new();
             foreach (var enemyData in Enemies) {
                 _enemies.Add(enemyData.Name, enemyData);
             }

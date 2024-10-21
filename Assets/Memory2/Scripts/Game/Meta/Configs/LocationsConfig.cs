@@ -23,6 +23,10 @@ namespace Memory2.Scripts.Game.Meta.Configs {
         }
 
         public int GetLevelsCountOnLocation(int location) {
+            if (_locationsMap == null) {
+                InitLocationsMap();
+            }
+            
             return _locationsMap[location].LevelIds.Count;
         }
         

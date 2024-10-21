@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2496919803988192275}
   - component: {fileID: 8707608951007278359}
   - component: {fileID: 8698712783491668672}
+  - component: {fileID: 7197956893709456438}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -31,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8812700256898381178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2496919803988192275
@@ -52,9 +54,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b064fc4ca6ac0e4bbe2c2b0688bed3c, type: 2}
   - {fileID: 11400000, guid: 12001f118ec899942a6e203dbcf0bb2c, type: 2}
   - {fileID: 11400000, guid: 27af43dcdc99d5d44b0b59f8c9d0ae24, type: 2}
+  - {fileID: 11400000, guid: 0636d3c5e276bd34cb077ed09bdd785f, type: 2}
+  - {fileID: 11400000, guid: 0579943bd8eac7547a2d819f84630577, type: 2}
   _monoInstallers:
   - {fileID: 8707608951007278359}
   - {fileID: 8698712783491668672}
+  - {fileID: 7197956893709456438}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0
@@ -94,3 +99,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa2c7d352b54d7f89082f8df0d3d5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7197956893709456438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759764894378806446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6921ecd274f4c92b1e348d29d00f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &4544139457350673677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8812700256898381178}
+  - component: {fileID: 6206627066890253314}
+  m_Layer: 0
+  m_Name: UIRegistry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8812700256898381178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544139457350673677}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8533932205885099541}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6206627066890253314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544139457350673677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586996582b8a4d6e9d49d4f836aec59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containers:
+  - Key: 0
+    Holder: {fileID: 4544139457350673677}

@@ -16,34 +16,54 @@ MonoBehaviour:
     CardCount: 12
     CardBackSideColor: {r: 0.7144928, g: 0.3724635, b: 0.8490566, a: 1}
     CardPrefab: {fileID: 6394619746739569626, guid: 19ccfbba06d23ad41be1d6240bf9da43, type: 3}
-    Cards:
+    _cards:
     - Id: 0
+      CardName: 
       Type: 1
       Damage: 0
-      Color: {r: 0.92549026, g: 0.8745099, b: 0, a: 1}
+      Color: {r: 1, g: 0, b: 0, a: 1}
       Sprite: {fileID: 0}
+      Cost: 0
     - Id: 1
-      Type: 1
-      Damage: 20
-      Color: {r: 0.86666673, g: 0.1137255, b: 0.10588236, a: 1}
+      CardName: 
+      Type: 2
+      Damage: 10
+      Color: {r: 1, g: 0.8135679, b: 0, a: 1}
       Sprite: {fileID: 0}
+      Cost: 0
     - Id: 2
+      CardName: 
       Type: 2
-      Damage: 0
-      Color: {r: 0.14117648, g: 0.43137258, b: 0.6745098, a: 1}
+      Damage: 20
+      Color: {r: 1, g: 0, b: 0.83533955, a: 1}
       Sprite: {fileID: 0}
+      Cost: 0
     - Id: 3
-      Type: 2
+      CardName: 
+      Type: 3
       Damage: 15
-      Color: {r: 0.91372555, g: 0.54509807, b: 0.08235294, a: 1}
+      Color: {r: 0.022774696, g: 0, b: 1, a: 1}
       Sprite: {fileID: 0}
+      Cost: 0
     - Id: 4
+      CardName: 
       Type: 3
       Damage: 5
-      Color: {r: 0.4156863, g: 0.20392159, b: 0.53333336, a: 1}
+      Color: {r: 0, g: 1, b: 0.9329295, a: 1}
       Sprite: {fileID: 0}
+      Cost: 0
     - Id: 5
-      Type: 4
+      CardName: 
+      Type: 3
       Damage: 10
-      Color: {r: 0, g: 0.54509807, b: 0.34509805, a: 1}
+      Color: {r: 0.02922988, g: 1, b: 0, a: 1}
       Sprite: {fileID: 0}
+      Cost: 0
+    - Id: 6
+      CardName: 
+      Type: 1
+      Damage: 5
+      Color: {r: 0, g: 0, b: 0, a: 1}
+      Sprite: {fileID: 0}
+      Cost: 120
+    _startCards: 000000000100000002000000030000000400000005000000
