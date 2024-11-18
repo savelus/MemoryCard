@@ -1,5 +1,5 @@
 using System;
-using Memory2.Scripts.Global.MVP.Enums;
+using Memory2.Scripts.Core.Enums;
 using TypeReferences;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

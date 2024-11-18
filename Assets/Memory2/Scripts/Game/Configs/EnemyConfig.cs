@@ -8,7 +8,7 @@ namespace Memory2.Scripts.Game.Configs {
     [Serializable]
     public class EnemyConfig : IInitializable {
         private Dictionary<string, EnemyData> _enemies;
-        [SerializeField] private List<EnemyData> Enemies;
+        public List<EnemyData> Enemies;
 
         void IInitializable.Initialize() {
             _enemies = new();

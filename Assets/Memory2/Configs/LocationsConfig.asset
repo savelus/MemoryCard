@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d593608647476692756eadc838e1dc, type: 3}
   m_Name: LocationsConfig
   m_EditorClassIdentifier: 
-  _locationsConfig:
+  LocationsConfig:
     Locations:
     - Id: 0
       Name: FirstLocation
-      ButtonSprite: {fileID: -838908008875007501, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
+      ButtonVisualId: cta_door
       LevelIds: 00000000010000000200000003000000
     - Id: 1
       Name: SecondLocation
-      ButtonSprite: {fileID: -838908008875007501, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
+      ButtonVisualId: cta_door
       LevelIds: 00000000010000000200000003000000
+    LocationButtonVisuals: []
     LocationsButtonPrefab: {fileID: 4734624143500941763, guid: b01388cf86a839a4abba9dfa69c9e131, type: 3}
     LevelButtonPrefab: {fileID: 7885869046851996067, guid: 8f892e9d1f06bea4e86648f236592574, type: 3}
-    ClosedButtonSprite: {fileID: -1980229905, guid: a5e645d0b2507ac42807ef8e886f7d45, type: 3}
+    ClosedButtonSprite: {fileID: 2061223666325461347, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}

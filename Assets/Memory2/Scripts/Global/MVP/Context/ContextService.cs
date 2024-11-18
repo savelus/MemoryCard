@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP.Context;
 using Memory2.Scripts.Global.MVP.Enums;
 using Zenject;

@@ -1,11 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Memory2.Scripts.Core.AssetManager;
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP;
 using Memory2.Scripts.Core.MVP.Base;
 using Memory2.Scripts.Core.MVP.Context;
-using Memory2.Scripts.Global.Configs;
-using Memory2.Scripts.Global.MVP.Enums;
 using UnityEngine;
 using Zenject;
 

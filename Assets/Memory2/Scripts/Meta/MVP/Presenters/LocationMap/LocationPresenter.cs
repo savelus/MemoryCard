@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Memory2.Scripts.Core.MVP.Base;
+using Memory2.Scripts.Global;
 using Memory2.Scripts.Global.Configs;
+using Memory2.Scripts.Global.Data;
 using Memory2.Scripts.Global.GameRoot;
 using Memory2.Scripts.Global.MVP.Context;
+using Memory2.Scripts.Global.MVP.Views;
 using Memory2.Scripts.Global.Storages;
 using Memory2.Scripts.Meta.Configs;
 using Memory2.Scripts.Meta.MVP.Data;
 using Memory2.Scripts.Meta.MVP.Interfaces;
 using Memory2.Scripts.Meta.MVP.View;
+using Memory2.Scripts.Meta.Storages;
 using UnityEngine;
 using Zenject;
 
@@ -65,7 +69,7 @@ namespace Memory2.Scripts.Meta.MVP.Presenters.LocationMap {
         }
 
         private void OnLevelClicked(int levelId, int locationDataId) {
-            _gameEntryPoint.LoadGameplayScene(new(_levelsConfig.GetLevelById(levelId), locationDataId, levelId));
+            _gameEntryPoint.LoadGameplayScene(new GameplayEnterParams(_levelsConfig.GetLevelById(levelId), locationDataId, levelId));
         }
 
         private void OnCloseButtonClicked() {

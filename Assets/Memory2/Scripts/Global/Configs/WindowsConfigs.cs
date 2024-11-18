@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP;
 using Memory2.Scripts.Global.MVP.Enums;
 using UnityEngine;

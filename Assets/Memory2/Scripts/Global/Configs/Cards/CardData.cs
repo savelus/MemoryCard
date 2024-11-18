@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Memory2.Scripts.Global.Configs.Cards {
     [Serializable]
-    public struct CardData {
+    public class CardData {
         public int Id;
         public string CardName;
         public Element Type;

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Memory2.Scripts.Global.Configs.Elements {
     [Serializable]
     public class ElementsHierarchyConfig {
-        [SerializeField] private List<ElementsDependencies> Dependencies;
+        public List<ElementsDependencies> Dependencies;
 
         private Dictionary<Element, HashSet<Element>> ElementsDependencies;
 

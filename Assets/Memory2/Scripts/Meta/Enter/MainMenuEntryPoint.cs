@@ -1,8 +1,8 @@
-﻿using Memory2.Scripts.Core.Signals;
-using Memory2.Scripts.Game.Entry;
+﻿using Memory2.Scripts.Core;
+using Memory2.Scripts.Core.Enums;
+using Memory2.Scripts.Core.Signals;
 using Memory2.Scripts.Global.Configs;
 using Memory2.Scripts.Global.GameRoot;
-using Memory2.Scripts.Global.MVP.Enums;
 using Memory2.Scripts.Meta.Data;
 using Memory2.Scripts.Meta.MVP.Data;
 using Memory2.Scripts.Meta.MVP.View;
@@ -11,7 +11,7 @@ using UnityEngine;
 using Zenject;
 
 namespace Memory2.Scripts.Meta.Enter {
-    public class MainMenuEntryPoint : MonoBehaviour {
+    public class MainMenuEntryPoint : EntryPoint {
         [SerializeField] private UIMainMenuRootBinder _sceneUIRootPrefab;
         private GameEntryPoint _gameEntryPoint;
         private LevelsConfig _levelsConfig;
@@ -29,11 +29,12 @@ namespace Memory2.Scripts.Meta.Enter {
             _signalBus = signalBus;
         }
 
-        public void Run(UIRootView uiRootView, MainMenuEnterParams enterParams) {
+        public override void Run(UIRootView uiRootView, SceneEnterParams enterParams) {
+            var mainMenuEnterParams = (MainMenuEnterParams) enterParams;
             var uiScene = Instantiate(_sceneUIRootPrefab);
 
-            if (enterParams is { IsLevelSuccess: true }) {
-                _moneyStorage.Add(enterParams.LevelData.Money);
+            if (mainMenuEnterParams is { IsLevelSuccess: true }) {
+                _moneyStorage.Add(mainMenuEnterParams.LevelData.Money);
                 _moneyStorage.Save();
             }
 
@@ -45,8 +46,8 @@ namespace Memory2.Scripts.Meta.Enter {
                 () => _signalBus.Fire(new OpenWindowSignal(WindowKey.Shop, new ShopWindowData())));
         }
 
-        private GameplayEnterParams CreateGameplayEnterParams() {
-            return new(_levelsConfig.GetRandomLevel(), 0, 0);
+        private SceneEnterParams CreateGameplayEnterParams() {
+            return new GameplayEnterParams(_levelsConfig.GetRandomLevel(), 0, 0);
         }
     }
 }

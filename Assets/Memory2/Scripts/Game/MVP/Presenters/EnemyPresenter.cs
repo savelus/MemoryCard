@@ -8,6 +8,7 @@ namespace Memory2.Scripts.Game.MVP.Presenters {
     public class EnemyPresenter {
         private readonly EnemyView _enemyView;
         private readonly EnemyData _enemyData;
+        private readonly Sprite _enemyVisual;
 
         private float _currentHealth;
 
@@ -16,14 +17,15 @@ namespace Memory2.Scripts.Game.MVP.Presenters {
 
         public Element GetEnemyType => _enemyData.Type;
 
-        public EnemyPresenter(EnemyView enemyView, EnemyData enemyData) {
+        public EnemyPresenter(EnemyView enemyView, EnemyData enemyData, Sprite enemyVisual) {
             _enemyView = enemyView;
             _enemyData = enemyData;
+            _enemyVisual = enemyVisual;
             _currentHealth = _enemyData.Health;
         }
 
         public void InitView(Sprite elementSprite) {
-            _enemyView.InitView(_enemyData.Name, _enemyData.Health.ToString(), _enemyData.Sprite, elementSprite);
+            _enemyView.InitView(_enemyData.Name, _enemyData.Health.ToString(), _enemyVisual, elementSprite);
             HealthChanged += value => _enemyView.SetHealth(value.ToString("F1"));
         }
 

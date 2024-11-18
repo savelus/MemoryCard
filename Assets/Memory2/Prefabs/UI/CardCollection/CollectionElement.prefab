@@ -76,11 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0673d63afe46944a8547432e3d488e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toggle: {fileID: 5851738073176652191}
   _name: {fileID: 4937596495403538592}
   _level: {fileID: 6780941246604884935}
   _cardView: {fileID: 4375243576420933052}
   _background: {fileID: 6254490303235513716}
+  _toggleButton: {fileID: 3526479202976082466}
+  _toggleImage: {fileID: 3394297925928434227}
 --- !u!1 &2592996335388024438
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 918450112484563291}
-  - component: {fileID: 5851738073176652191}
+  - component: {fileID: 3526479202976082466}
   m_Layer: 5
   m_Name: CheckBox
   m_TagString: Untagged
@@ -652,7 +653,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5851738073176652191
+--- !u!114 &3526479202976082466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -661,7 +662,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7821881409273539572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -693,13 +694,9 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 635249214331806621}
-  toggleTransition: 1
-  graphic: {fileID: 3394297925928434227}
-  m_Group: {fileID: 0}
-  onValueChanged:
+  m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
 --- !u!1 &8603314547322746215
 GameObject:
   m_ObjectHideFlags: 0

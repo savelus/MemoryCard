@@ -1,20 +1,19 @@
-﻿using Memory2.Scripts.Core.StateMachine.Base;
-using Memory2.Scripts.Core.StateMachine.States;
+﻿using Memory2.Scripts.Core;
 using Memory2.Scripts.Game.MVP.View;
+using Memory2.Scripts.Game.StateMachine.States;
 using Memory2.Scripts.Global.GameRoot;
-using UnityEngine;
 using Zenject;
 
 namespace Memory2.Scripts.Game.Entry {
-    public class GameplayEntryPoint : MonoBehaviour {
+    public class GameplayEntryPoint : EntryPoint {
         private UIGameplayRoot _uiGameplayRoot;
-        private StateMachine _stateMachine;
+        private StateMachine.Base.StateMachine _stateMachine;
         private InitializeCardState _initializeCardState;
         private EndGameState _endGameState;
         private GameScope _gameScope;
 
         [Inject]
-        public void Construct(StateMachine stateMachine,
+        public void Construct(StateMachine.Base.StateMachine stateMachine,
             InitializeCardState initializeCardState,
             EndGameState endGameState,
             UIGameplayRoot uiGameplayRoot,
@@ -27,10 +26,11 @@ namespace Memory2.Scripts.Game.Entry {
             _gameScope = gameScope;
         }
 
-        public void Run(UIRootView uiRootView, GameplayEnterParams enterParams) {
-            _gameScope.LevelData = enterParams.LevelData;
-            _gameScope.Level = enterParams.Level;
-            _gameScope.Location = enterParams.Location;
+        public override void Run(UIRootView uiRootView, SceneEnterParams enterParams) {
+            var gameplayEnterParams = (GameplayEnterParams) enterParams; 
+            _gameScope.LevelData = gameplayEnterParams.LevelData;
+            _gameScope.Level = gameplayEnterParams.Level;
+            _gameScope.Location = gameplayEnterParams.Location;
             uiRootView.AttachSceneUI(_uiGameplayRoot.gameObject);
             _uiGameplayRoot.Bind(() => _stateMachine.ChangeState(_endGameState));
 

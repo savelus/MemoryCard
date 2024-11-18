@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Memory2.Scripts.Core.Storages;
 using Memory2.Scripts.Global.Data;
-using Memory2.Scripts.Global.Storages.Root;
 using UnityEngine;
 using Zenject;
 

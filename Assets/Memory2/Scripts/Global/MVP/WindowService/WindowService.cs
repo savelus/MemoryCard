@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP;
 using Memory2.Scripts.Core.MVP.Base;
 using Memory2.Scripts.Core.Signals;
@@ -69,6 +70,8 @@ namespace Memory2.Scripts.Global.MVP.WindowService {
             if (!_windowsIntoContext.TryGetValue(context, out var windowKeys)) return;
 
             foreach (var key in windowKeys) {
+                if (!_windowsByUid.ContainsKey(key)) continue;
+
                 CloseWindow(key, true).Forget();
                 var window = _windowsByUid[key];
 
@@ -132,7 +135,7 @@ namespace Memory2.Scripts.Global.MVP.WindowService {
 
         private async UniTask CloseWindow(WindowKey key, bool immediate = false) {
             if (!_windowsByUid.TryGetValue(key, out UIWindow window)) {
-                throw new WarningException($"Window is not active, uid: {key}");
+                Debug.LogWarning($"Window is not active, uid: {key}");
             }
 
             if (CanBeClosed(window)) {

@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
+using Memory2.Scripts.Core.Enums;
+using Memory2.Scripts.Core.MVP.Context;
 using Memory2.Scripts.Core.Signals;
-using Memory2.Scripts.Global.MVP.Context;
-using Memory2.Scripts.Global.MVP.Enums;
 
 namespace Memory2.Scripts.Core.MVP.Base {
     public class BaseWindowPresenter<TView, TData> : BasePresenter<TView, TData>
@@ -9,7 +9,7 @@ namespace Memory2.Scripts.Core.MVP.Base {
         where TData : IWindowData {
         private WindowKey _key;
 
-        protected BaseWindowPresenter(ContextService service) : base(service) { }
+        protected BaseWindowPresenter(IContextService service) : base(service) { }
 
         public override async UniTask Initialize(IWindowData data, WindowKey key, bool isInit) {
             WindowData = (TData)data;

@@ -30,7 +30,7 @@ MonoBehaviour:
         GuidAssignmentFailed: 0
         GUID: c29ca2a76c12460aabfb3285d3b25dbb
         _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.CardCollection.CardCollectionPresenter,
-          Assembly-CSharp
+          Meta
         _suppressLogs: 0
     - Uid: 9e323f68-1501-4a47-a7b1-0a607a93e496
       PrefabReference:
@@ -48,7 +48,7 @@ MonoBehaviour:
         GuidAssignmentFailed: 0
         GUID: 54d7f969ee3b442da206b40e79323d55
         _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.LocationMap.LocationPresenter,
-          Assembly-CSharp
+          Meta
         _suppressLogs: 0
     - Uid: 35f5e989-6d5b-4193-83fb-73ce6e7b603d
       PrefabReference:
@@ -66,7 +66,7 @@ MonoBehaviour:
         GuidAssignmentFailed: 0
         GUID: 5deb673ec28b4a5baa4f76f514e9496b
         _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.LocationMap.LocationMapPresenter,
-          Assembly-CSharp
+          Meta
         _suppressLogs: 0
     - Uid: cff577cb-407d-407d-918e-aed50c9b173a
       PrefabReference:
@@ -84,7 +84,7 @@ MonoBehaviour:
         GuidAssignmentFailed: 0
         GUID: b0a725a8541a8c3409f99bcc1c625aad
         _typeNameAndAssembly: Memory2.Scripts.Meta.MVP.Presenters.Shop.ShopPresenter,
-          Assembly-CSharp
+          Meta
         _suppressLogs: 0
     - Uid: f4522a0c-1784-489b-a837-121bd9864d32
       PrefabReference:
@@ -102,5 +102,23 @@ MonoBehaviour:
         GuidAssignmentFailed: 0
         GUID: 6ade3af9cd8e8454089aa21ab05b59ea
         _typeNameAndAssembly: Memory2.Scripts.Game.MVP.Presenters.EndGamePresenter,
-          Assembly-CSharp
+          Game
+        _suppressLogs: 0
+    - Uid: f4522a0c-1784-489b-a837-121bd9864d32
+      PrefabReference:
+        m_AssetGUID: 726c36283b20d45478bfaf396efdcdc1
+        m_SubObjectName: 
+        m_SubObjectGUID: 
+        m_SubObjectType: 
+        m_EditorAssetChanged: 0
+      Key: 6
+      Priority: 0
+      IsFullScreen: 1
+      CanClose: 1
+      Context: 2
+      _controller:
+        GuidAssignmentFailed: 0
+        GUID: 76367e7b4b7547d2b3da5c89f5caf172
+        _typeNameAndAssembly: Memory2.Scripts.Global.MVP.Presenters.SimpleHintPresenter,
+          Global
         _suppressLogs: 0

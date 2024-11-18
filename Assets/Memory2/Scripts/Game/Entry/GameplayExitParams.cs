@@ -1,10 +1,11 @@
-﻿using Memory2.Scripts.Meta.Enter;
+﻿using Memory2.Scripts.Core;
+using Memory2.Scripts.Global.GameRoot;
 
 namespace Memory2.Scripts.Game.Entry {
     public class GameplayExitParams {
-        public MainMenuEnterParams MainMenuEnterParams { get; }
+        public SceneEnterParams MainMenuEnterParams { get; }
 
-        public GameplayExitParams(MainMenuEnterParams mainMenuEnterParams) {
+        public GameplayExitParams(SceneEnterParams mainMenuEnterParams) {
             MainMenuEnterParams = mainMenuEnterParams;
         }
     }

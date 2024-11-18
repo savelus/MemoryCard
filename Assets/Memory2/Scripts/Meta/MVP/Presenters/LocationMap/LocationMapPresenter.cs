@@ -1,15 +1,20 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP.Base;
 using Memory2.Scripts.Core.Signals;
+using Memory2.Scripts.Global;
+using Memory2.Scripts.Global.Configs;
 using Memory2.Scripts.Global.MVP.Context;
 using Memory2.Scripts.Global.MVP.Enums;
+using Memory2.Scripts.Global.MVP.Views;
 using Memory2.Scripts.Global.Storages;
 using Memory2.Scripts.Meta.Configs;
 using Memory2.Scripts.Meta.Data;
 using Memory2.Scripts.Meta.MVP.Data;
 using Memory2.Scripts.Meta.MVP.Interfaces;
 using Memory2.Scripts.Meta.MVP.View;
+using Memory2.Scripts.Meta.Storages;
 using UnityEngine;
 using Zenject;
 
@@ -38,11 +43,12 @@ namespace Memory2.Scripts.Meta.MVP.Presenters.LocationMap {
             foreach (var (locationDataId, locationDataValue) in _locationsConfig.GetLocationsMap()) {
                 var button = CreateButton();
                 _buttons.Add(button);
+                var sprite = _locationsConfig.GetLocationButtonVisual(locationDataValue.ButtonVisualId);
                 if (locationDataId <= currentLocation) {
-                    button.Initialize(locationDataValue.ButtonSprite, true, () => OnLocationClicked(locationDataId));
+                    button.Initialize(sprite, true, () => OnLocationClicked(locationDataId));
                 }
                 else {
-                    button.Initialize(locationDataValue.ButtonSprite, false, null);
+                    button.Initialize(sprite, false, null);
                 }
             }
 

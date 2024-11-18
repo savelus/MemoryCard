@@ -1,4 +1,5 @@
-﻿using Memory2.Scripts.Meta.Storages;
+﻿using Memory2.Scripts.Global.Storages;
+using Memory2.Scripts.Meta.Storages;
 using Zenject;
 
 namespace Memory2.Scripts.Meta.Installers {

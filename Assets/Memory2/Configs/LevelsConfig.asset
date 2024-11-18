@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8acefdec8046c8910497d48233a7ae, type: 3}
   m_Name: LevelsConfig
   m_EditorClassIdentifier: 
-  _levelsConfig:
+  LevelsConfig:
     Levels:
     - LevelId: 0
       Seconds: 10

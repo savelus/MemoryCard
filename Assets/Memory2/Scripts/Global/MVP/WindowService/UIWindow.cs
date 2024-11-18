@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP;
 using Memory2.Scripts.Core.MVP.Base;
 using Memory2.Scripts.Global.Configs;

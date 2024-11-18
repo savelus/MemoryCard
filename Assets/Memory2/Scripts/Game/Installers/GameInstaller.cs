@@ -1,6 +1,5 @@
-﻿using Memory2.Scripts.Core.StateMachine.Base;
-using Memory2.Scripts.Core.StateMachine.States;
-using Memory2.Scripts.Game.Services;
+﻿using Memory2.Scripts.Game.Services;
+using Memory2.Scripts.Game.StateMachine.States;
 using Zenject;
 
 namespace Memory2.Scripts.Game.Installers {
@@ -45,7 +44,7 @@ namespace Memory2.Scripts.Game.Installers {
 
         private void InstallStateMachine() {
             Container
-                .Bind<StateMachine>()
+                .Bind<StateMachine.Base.StateMachine>()
                 .AsSingle()
                 .NonLazy();
 

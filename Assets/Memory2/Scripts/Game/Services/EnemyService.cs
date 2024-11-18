@@ -11,6 +11,7 @@ namespace Memory2.Scripts.Game.Services {
         private readonly PrefabConfig _prefabConfig;
         private readonly UIGameplayRoot _uiGameplayRoot;
         private readonly EnemyConfig _enemyConfig;
+        private readonly EnemyVisualConfig _enemyVisualConfig;
         private readonly ElementsIconConfig _elementsIconConfig;
         private readonly GameScope _gameScope;
 
@@ -22,22 +23,25 @@ namespace Memory2.Scripts.Game.Services {
         public Element CurrentEnemyType => _activeEnemy.GetEnemyType;
 
         public EnemyService(PrefabConfig prefabConfig,
-            UIGameplayRoot uiGameplayRoot,
-            EnemyConfig enemyConfig,
-            ElementsIconConfig elementsIconConfig) {
+                            UIGameplayRoot uiGameplayRoot,
+                            EnemyConfig enemyConfig,
+                            EnemyVisualConfig enemyVisualConfig,
+                            ElementsIconConfig elementsIconConfig) {
             _prefabConfig = prefabConfig;
             _uiGameplayRoot = uiGameplayRoot;
             _enemyConfig = enemyConfig;
+            _enemyVisualConfig = enemyVisualConfig;
             _elementsIconConfig = elementsIconConfig;
         }
 
         public void SpawnEnemy(string enemyId) {
             var enemyData = _enemyConfig.GetEnemyById(enemyId);
+            var enemySprite = _enemyVisualConfig.GetEnemyVisual(enemyData.SpriteId);
             var enemyView = Object.Instantiate(_prefabConfig.GetEnemyPrefab());
             _uiGameplayRoot.AddEnemy(enemyView.transform);
 
             var elementSprite = _elementsIconConfig.GetSprite(enemyData.Type);
-            _activeEnemy = new EnemyPresenter(enemyView, enemyData);
+            _activeEnemy = new EnemyPresenter(enemyView, enemyData, enemySprite);
             _activeEnemy.InitView(elementSprite);
             _activeEnemy.EnemyDead += OnEnemyDead;
             IsEnemyAlive = true;

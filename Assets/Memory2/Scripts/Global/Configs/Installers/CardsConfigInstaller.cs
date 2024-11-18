@@ -5,7 +5,7 @@ using Zenject;
 namespace Memory2.Scripts.Global.Configs.Installers {
     [CreateAssetMenu(fileName = "CardsConfig", menuName = "Configs/CardsConfig")]
     public class CardsConfigInstaller : ScriptableObjectInstaller<CardsConfigInstaller> {
-        [SerializeField] private CardsConfig _cardsConfig;
+        public CardsConfig _cardsConfig;
 
         public override void InstallBindings() {
             Container

@@ -1,4 +1,5 @@
 ﻿using System;
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP.Context;
 using Memory2.Scripts.Global.MVP.Context;
 using Memory2.Scripts.Global.MVP.Enums;

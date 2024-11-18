@@ -1,7 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Memory2.Scripts.Global.MVP.Context;
-using Memory2.Scripts.Global.MVP.Enums;
+using Memory2.Scripts.Core.Enums;
+using Memory2.Scripts.Core.MVP.Context;
 using R3;
 using Zenject;
 
@@ -15,10 +15,10 @@ namespace Memory2.Scripts.Core.MVP.Base {
 
         protected WindowState State => _state.Value;
 
-        private ContextService _contextService;
+        private IContextService _contextService;
         [Inject] protected SignalBus SignalBus;
 
-        protected BasePresenter(ContextService service) {
+        protected BasePresenter(IContextService service) {
             _contextService = service;
         }
 

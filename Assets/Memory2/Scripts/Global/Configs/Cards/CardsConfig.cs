@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Memory2.Scripts.Core.Utils;
-using Memory2.Scripts.Game.MVP.View;
+using Memory2.Scripts.Global.MVP.Views;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Memory2.Scripts.Global.Configs.Cards {
     [Serializable]
@@ -12,7 +13,7 @@ namespace Memory2.Scripts.Global.Configs.Cards {
         public Color CardBackSideColor;
         public CardView CardPrefab;
 
-        [SerializeField] private List<CardData> _cards = new();
+        public List<CardData> Cards = new();
         [SerializeField] private List<int> _startCards = new();
 
         private Dictionary<int, CardData> _cardsMap;
@@ -26,7 +27,7 @@ namespace Memory2.Scripts.Global.Configs.Cards {
         }
 
         public IEnumerable<CardData> GetAllCards() {
-            return _cards;
+            return Cards;
         }
 
         public CardData GetCardDataById(int id) {
@@ -37,7 +38,7 @@ namespace Memory2.Scripts.Global.Configs.Cards {
         }
 
         private void InitCardsMap() {
-            _cardsMap = _cards.ToDictionary(x => x.Id);
+            _cardsMap = Cards.ToDictionary(x => x.Id);
         }
     }
 }

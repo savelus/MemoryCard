@@ -1,4 +1,5 @@
-﻿using Memory2.Scripts.Meta.MVP.View.CardCollection;
+﻿using System.ComponentModel;
+using Memory2.Scripts.Meta.MVP.View.CardCollection;
 using UnityEngine;
 using Zenject;
 

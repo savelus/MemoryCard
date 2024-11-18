@@ -1,4 +1,7 @@
-﻿namespace Memory2.Scripts.Global.Enums {
+﻿using System;
+
+namespace Memory2.Scripts.Global.Enums {
+    [Serializable]
     public enum Element {
         None = 0,
         Fire = 1,

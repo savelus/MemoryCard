@@ -1,4 +1,4 @@
-﻿using Memory2.Scripts.Global.MVP.Enums;
+﻿using Memory2.Scripts.Core.Enums;
 
 namespace Memory2.Scripts.Core.MVP.Context {
     public interface IContext {

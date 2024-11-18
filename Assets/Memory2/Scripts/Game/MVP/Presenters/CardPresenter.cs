@@ -1,5 +1,6 @@
-﻿using Memory2.Scripts.Game.MVP.View;
+﻿using Memory2.Scripts.Global;
 using Memory2.Scripts.Global.Data;
+using Memory2.Scripts.Global.MVP.Views;
 using UnityEngine;
 using UnityEngine.Events;
 

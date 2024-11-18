@@ -8,6 +8,6 @@ namespace Memory2.Scripts.Game.Data {
         public string Name;
         public Element Type;
         public int Health;
-        public Sprite Sprite;
+        public string SpriteId;
     }
 }

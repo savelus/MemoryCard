@@ -1,5 +1,5 @@
+using Memory2.Scripts.Core.Enums;
 using Memory2.Scripts.Core.MVP.Base;
-using Memory2.Scripts.Global.MVP.Enums;
 
 namespace Memory2.Scripts.Core.Signals {
     public struct OpenWindowSignal {
