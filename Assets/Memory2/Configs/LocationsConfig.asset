@@ -22,7 +22,9 @@ MonoBehaviour:
       Name: SecondLocation
       ButtonVisualId: cta_door
       LevelIds: 00000000010000000200000003000000
-    LocationButtonVisuals: []
+    LocationButtonVisuals:
+    - Id: cta_door
+      Sprite: {fileID: -838908008875007501, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
     LocationsButtonPrefab: {fileID: 4734624143500941763, guid: b01388cf86a839a4abba9dfa69c9e131, type: 3}
     LevelButtonPrefab: {fileID: 7885869046851996067, guid: 8f892e9d1f06bea4e86648f236592574, type: 3}
     ClosedButtonSprite: {fileID: 2061223666325461347, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
